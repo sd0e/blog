@@ -1,0 +1,26 @@
+.icon {
+	width: 3.5rem;
+	height: 3.5rem;
+	border-radius: 1rem;
+	background: linear-gradient(to top left, #0E05B9, rgba(255, 153, 150, 0), #0D04BF), linear-gradient(to top right, #240C58, rgba(255, 153, 150, 0), #0000FF) #231ec0;
+}
+
+.siteName {
+	font-weight: 500;
+	font-size: 1.4rem;
+	display: block;
+}
+
+.siteSubtitle {
+	font-weight: 400;
+	color: #999999;
+	display: block;
+}
+
+.leftIcon {
+	padding-right: 2rem;
+}
+
+.rightDescription {
+	padding-bottom: 0.5rem;
+}

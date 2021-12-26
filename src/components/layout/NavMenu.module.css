@@ -1,0 +1,40 @@
+.navMenuInner {
+	padding: 3rem 1.5rem;
+}
+
+.searchInput {
+	background: rgba(51, 51, 51, 0.2);
+	font-weight: 400;
+	color: #999999;
+	font-size: 0.9rem;
+	border: 0;
+	padding: 1rem;
+	border-radius: 0.5rem;
+	font-family: 'Inter', sans-serif;
+	width: 10rem;
+	max-width: 80%;
+}
+
+.searchInput:hover {
+	outline: none;
+}
+
+.searchTableOuter {
+	width: 100%;
+	border-spacing: 0;
+	margin-bottom: 2rem;
+}
+
+.flexDiv {
+	display: flex;
+	height: 100%;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.mobileMenuCloseContainer {
+	width: 100%;
+	display: flex;
+	justify-content: right;
+	margin-bottom: 1.5rem;
+}

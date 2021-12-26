@@ -1,0 +1,11 @@
+.infoCardContainer {
+	display: flex;
+	align-items: center;
+}
+
+.infoCardText {
+	color: #a1a0a8;
+	font-weight: 400;
+	font-size: 0.9rem;
+	margin-left: 1rem;
+}

@@ -1,0 +1,30 @@
+.postButtonContainerOuter {
+	width: 100%;
+}
+
+.postButtonTitle {
+	font-family: 'Merriweather', Georgia, serif;
+	font-size: 1.2rem;
+	display: block;
+	font-weight: 700;
+}
+
+.postButtonBottomContentContainer {
+	margin-top: 0.5rem;
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.postButtonDate {
+	font-weight: 400;
+	color: #bfbfbf;
+	font-size: 0.8rem;
+}
+
+.postButtonCategory {
+	font-size: 0.8rem;
+	font-weight: 600;
+	filter: opacity(0.8);
+}

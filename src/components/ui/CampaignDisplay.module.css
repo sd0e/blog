@@ -1,0 +1,27 @@
+.campaignContentOuter {
+	text-align: left;
+}
+
+.campaignType {
+	text-transform: uppercase;
+	letter-spacing: 0.15rem;
+	color: rgba(153, 153, 153, 0.8);
+	display: block;
+	font-size: 0.9rem;
+	font-weight: 500;
+}
+
+.campaignSiteName {
+	font-family: 'Merriweather', Georgia, serif;
+	color: #ffffff;
+	display: block;
+	font-size: 1.3rem;
+	font-weight: 700;
+}
+
+.campaignDescription {
+	color: rgba(153, 153, 153, 0.8);
+	display: block;
+	font-size: 0.9rem;
+	font-weight: 400;
+}

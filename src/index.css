@@ -1,13 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@600;700&display=swap');
+
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+	margin: 0;
+	background-color: #141313;
+	color: #FFFFFF;
+	font-family: 'Inter', sans-serif;
+	font-weight: 600;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+* {
+	-webkit-user-select: initial;
+	-moz-user-select: initial;
+	-ms-user-select: initial;
+	user-select: initial;
+	scrollbar-width: thin;
+}
+
+body::-webkit-scrollbar {
+	width: 8px;
+}
+
+body::-webkit-scrollbar-thumb {
+	background-color: rgba(242, 242, 242, 0.1);
+}
+
+main {
+	width: calc(100vw - 6rem);
+	height: calc(100vh - 8rem);
+	padding: 4rem 3rem;
+	max-width: 90rem;
+	margin: 0 auto;
+}
+
+pre {
+	margin-top: 2rem;
+	margin-bottom: 2rem;
+}
+
+a {
+	color: #84bef0;
 }
