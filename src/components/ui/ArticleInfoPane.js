@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ThemeProvider, createTheme, IconButton, Button, Menu, MenuItem, ListItemIcon, Paper } from '@mui/material';
 import { Reddit, Share, Twitter } from '@mui/icons-material';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import classes from './ArticleInfoPane.module.css';
 import StringFromDate from '../../scripts/StringFromDate';
@@ -9,7 +9,7 @@ import StringFromDate from '../../scripts/StringFromDate';
 export default function ArticleInfoPane({ Date, Category, ArticleName }) {
 	const [anchorElement, setAnchorElement] = useState(null);
 
-	let history = useHistory();
+	let navigate = useNavigate();
 
 	const isOpen = Boolean(anchorElement);
 
@@ -52,13 +52,13 @@ export default function ArticleInfoPane({ Date, Category, ArticleName }) {
 		<div className={classes.articleInfoPaneOuter}>
 			<ThemeProvider theme={theme}>
 				<span className={classes.articleInfoDate}>{dateString}</span>
-				<Button style={{ display: 'inline-block', marginRight: '3rem' }} onClick={() => history.push(`/category/${categoryName.toLowerCase()}`)}>
+				<Button style={{ display: 'inline-block', marginRight: '3rem' }} onClick={() => navigate(`/category/${categoryName.toLowerCase()}`)} aria-label={`Go to ${categoryName}`}>
 					<span className={classes.articleInfoCategory} style={{ color: `#${categoryHexColour}` }}>{categoryName}</span>
 				</Button>
-				<IconButton id="share-button" size="small" color="primary" aria-controls="share-menu" aria-haspopup="true" aria-expanded={ isOpen ? 'true' : undefined } onClick={e => setAnchorElement(e.currentTarget)}>
+				<IconButton id="share-button" size="small" color="primary" aria-controls="share-menu" aria-haspopup="true" aria-expanded={ isOpen ? 'true' : undefined } onClick={e => setAnchorElement(e.currentTarget)} aria-label="Share">
 					<Share fontSize="12px" />
 				</IconButton>
-					<Menu id="share-menu" anchorEl={anchorElement} open={isOpen} onClose={() => setAnchorElement(null)} MenuListProps={{ 'aria-labelledby': 'share-button' }}>
+					<Menu id="share-menu" anchorEl={anchorElement} open={isOpen} onClose={() => setAnchorElement(null)} MenuListProps={{ 'aria-labelledby': 'share-button', 'aria-controls': false }}>
 						<Paper sx={{ width: 200, maxWidth: '100%', backgroundColor: 'rgba(0, 0, 0, 0)' }} elevation={0}>
 							<MenuItem onClick={() => shareArticle('twitter')}>
 								<ListItemIcon>

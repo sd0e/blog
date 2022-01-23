@@ -25,11 +25,21 @@
 	margin-bottom: 2rem;
 }
 
-.flexDiv {
+.flexDivMobile {
 	display: flex;
 	height: 100%;
 	flex-direction: column;
 	justify-content: space-between;
+}
+
+.flexDiv {
+	display: flex;
+	height: calc(100vh - 8rem);
+	width: 20rem;
+	flex-direction: column;
+	justify-content: space-between;
+	position: fixed;
+	overflow-y: auto;
 }
 
 .mobileMenuCloseContainer {

@@ -8,7 +8,6 @@
 }
 
 .rightColumn {
-	height: calc(100vh - 12rem);
 	width: 20rem;
 	padding-left: 4rem;
 	border: 0;
@@ -19,10 +18,16 @@
 .tableContainer {
 	width: 100%;
 	height: 100%;
+	max-width: 90rem;
+	margin: 0 auto;
 }
 
 .allContainer {
 	border: 0;
+	width: calc(100% - 6rem);
+	height: calc(100% - 8rem);
+	padding: 4rem 3rem;
+	overflow-y: scroll;
 }
 
 .mobileHeader {
@@ -39,9 +44,17 @@
 	align-items: center;
 }
 
+.mobileContentOuter {
+	width: 100%;
+	display: flex;
+	align-items: center;
+}
+
 .mobileContent {
+	width: 100%;
+	height: calc(100% - 2rem);
 	padding: 0.5rem;
-	padding-top: 2rem;
+	padding-top: 0rem;
 	transform: scale(0.85);
 }
 

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { LinearProgress, ThemeProvider, createTheme } from '@mui/material';
 
 import AddToAnalytics from '../scripts/AddToAnalytics';
 import PageHead from '../PageHead';
@@ -13,17 +14,43 @@ import FetchLast from '../scripts/FetchLast';
 import InfoCard from '../components/ui/InfoCard';
 
 export default function Home() {
-	let history = useHistory();
+	let navigate = useNavigate();
 	
 	const [categoryArticles, setCategoryArticles] = useState('Loading');
+	const [earliestPageNum, setEarliestPageNum] = useState('Progress');
 
 	useEffect(() => {
 		AddToAnalytics('Home', '/');
 
 		FetchLast(`/blog/recent/page`).then(pageInfo => {
+			setEarliestPageNum(Number(Object.keys(pageInfo)[0]));
 			setCategoryArticles(pageInfo[Object.keys(pageInfo)].reverse());
+			const el = document.getElementById('end');
+			var rect = el.getBoundingClientRect();
+			var elemTop = rect.top;
+			var elemBottom = rect.bottom;
+			const bottom = (elemTop >= 0) && (elemBottom <= window.innerHeight);
+			if (bottom) window['bottomReached']();
 		});
 	}, []);
+
+	window['bottomReached'] = () => {
+		if (earliestPageNum !== 'Progress' && earliestPageNum > 1) {
+			setEarliestPageNum('Progress');
+			Fetch(`/blog/recent/page/${earliestPageNum - 1}`).then(articles => {
+				const existingArticles = categoryArticles;
+				const newArticles = [...existingArticles, ...articles.reverse()];
+				setCategoryArticles(newArticles);
+				setEarliestPageNum(earliestPageNum - 1);
+			})
+		}
+	}
+
+	const theme = createTheme({
+		palette: {
+			mode: 'dark',
+		},
+	});
 
 	return (
 		<div>
@@ -39,10 +66,15 @@ export default function Home() {
 							const categoryArticleArray = categoryArticle.split('|||');
 							const timeString = StringFromDate(categoryArticleArray[1]);
 							return <PostButton Date={timeString} key={categoryArticleArray[0]} Category={categoryArticleArray[2]} CategoryColour={`#${categoryArticleArray[3]}`} Click={() => {
-								history.push(`/article/${categoryArticleArray[0].toLowerCase().split(' ').join('-')}`);
+								navigate(`/article/${categoryArticleArray[0].toLowerCase().split(' ').join('-')}`);
 							}}>{categoryArticleArray[0]}</PostButton>
 						})
 				}
+				<div id="end">{ earliestPageNum === 'Progress' && categoryArticles !== 'Loading' &&
+					<ThemeProvider theme={theme}>
+						<LinearProgress />
+					</ThemeProvider>
+				}</div>
 			</PostListContainer>
 		</div>
 	);

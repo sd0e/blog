@@ -1,4 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@600;700&display=swap');
+html {
+	width: 100%;
+	height: 100%;
+}
 
 body {
 	margin: 0;
@@ -6,6 +9,8 @@ body {
 	color: #FFFFFF;
 	font-family: 'Inter', sans-serif;
 	font-weight: 600;
+	width: 100%;
+	height: 100%;
 }
 
 * {
@@ -16,20 +21,17 @@ body {
 	scrollbar-width: thin;
 }
 
-body::-webkit-scrollbar {
+*::-webkit-scrollbar {
 	width: 8px;
 }
 
-body::-webkit-scrollbar-thumb {
+*::-webkit-scrollbar-thumb {
 	background-color: rgba(242, 242, 242, 0.1);
 }
 
-main {
-	width: calc(100vw - 6rem);
-	height: calc(100vh - 8rem);
-	padding: 4rem 3rem;
-	max-width: 90rem;
-	margin: 0 auto;
+#root {
+	width: 100%;
+	height: 100%;
 }
 
 pre {
@@ -39,4 +41,13 @@ pre {
 
 a {
 	color: #84bef0;
+}
+
+p {
+	filter: opacity(0.9);
+	line-height: 1.5rem;
+}
+
+#end {
+	height: 1px;
 }

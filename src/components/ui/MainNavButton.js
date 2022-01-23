@@ -1,11 +1,11 @@
 import React from 'react';
 import { Button, createTheme, ThemeProvider } from '@mui/material';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import classes from './MainNavButton.module.css';
 
 export default function NavMenu({ OnClick, CompactMode }) {
-	let history = useHistory();
+	let navigate = useNavigate();
 
 	const theme = createTheme({
 		palette: {
@@ -34,7 +34,7 @@ export default function NavMenu({ OnClick, CompactMode }) {
 
 	return (
 		<ThemeProvider theme={theme}>
-			<Button onClick={OnClick}>
+			<Button onClick={OnClick} aria-label="Home">
 				<div>
 					<table>
 						<tbody>

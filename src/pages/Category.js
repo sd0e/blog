@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { HighlightOff } from '@mui/icons-material';
+import { LinearProgress, ThemeProvider, createTheme } from '@mui/material';
 
 import AddToAnalytics from '../scripts/AddToAnalytics';
 import PageHead from '../PageHead';
@@ -15,15 +16,17 @@ import StringFromDate from '../scripts/StringFromDate';
 import InfoCard from '../components/ui/InfoCard';
 
 export default function Out() {
-	let history = useHistory();
+	let navigate = useNavigate();
+	let location = useLocation();
 	
-	const categoryID = history.location.pathname.split('/').pop().toLowerCase();
+	const categoryID = location.pathname.split('/').pop().toLowerCase();
 
 	const [categoryInfo, setCategoryInfo] = useState('Loading');
 	const [categoryArticles, setCategoryArticles] = useState('Loading');
+	const [earliestPageNum, setEarliestPageNum] = useState('Progress');
 	
 	useEffect(() => {
-		AddToAnalytics(`Category | ${categoryID}`, history.location.pathname);
+		AddToAnalytics(`Category | ${categoryID}`, location.pathname);
 
 		Fetch(`/blog/categories/${categoryID}/info`).then(categoryDisplayInfo => {
 			if (categoryDisplayInfo !== null && categoryDisplayInfo !== undefined) {
@@ -36,11 +39,36 @@ export default function Out() {
 		FetchLast(`/blog/categories/${categoryID}/articles/page`).then(pageInfo => {
 			if (pageInfo !== undefined && pageInfo !== null) {
 				setCategoryArticles(pageInfo[Object.keys(pageInfo)].reverse());
+				setEarliestPageNum(Number(Object.keys(pageInfo)[0]));
+				const el = document.getElementById('end');
+				var rect = el.getBoundingClientRect();
+				var elemTop = rect.top;
+				var elemBottom = rect.bottom;
+				const bottom = (elemTop >= 0) && (elemBottom <= window.innerHeight);
+				if (bottom) window['bottomReached']();
 			} else {
 				setCategoryArticles('None');
 			}
 		});
 	}, []);
+
+	window['bottomReached'] = () => {
+		if (earliestPageNum !== 'Progress' && earliestPageNum > 1) {
+			setEarliestPageNum('Progress');
+			Fetch(`/blog/categories/${categoryID}/articles/page/${earliestPageNum - 1}`).then(articles => {
+				const existingArticles = categoryArticles;
+				const newArticles = [...existingArticles, ...articles.reverse()];
+				setCategoryArticles(newArticles);
+				setEarliestPageNum(earliestPageNum - 1);
+			})
+		}
+	}
+
+	const theme = createTheme({
+		palette: {
+			mode: 'dark',
+		},
+	});
 
 	if (categoryInfo === 'Loading') {
 		return (
@@ -75,10 +103,15 @@ export default function Out() {
 									const categoryArticleArray = categoryArticle.split('|||');
 									const timeString = StringFromDate(categoryArticleArray[1]);
 									return <PostButton Date={timeString} key={categoryArticleArray[0]} Category={categoryInfo['name']} CategoryColour={`#${categoryInfo['color']}`} Click={() => {
-										history.push(`/article/${categoryArticleArray[0].toLowerCase().split(' ').join('-')}`);
+										navigate(`/article/${categoryArticleArray[0].toLowerCase().split(' ').join('-')}`);
 									}}>{categoryArticleArray[0]}</PostButton>
 								})
 					}
+					<div id="end">{ earliestPageNum === 'Progress' && categoryArticles !== 'Loading' &&
+						<ThemeProvider theme={theme}>
+							<LinearProgress />
+						</ThemeProvider>
+					}</div>
 				</PostListContainer>
 			</div>
 		);

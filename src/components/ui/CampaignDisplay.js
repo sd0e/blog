@@ -1,11 +1,11 @@
 import React from 'react';
 import { Button, createTheme, ThemeProvider } from '@mui/material';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import classes from './CampaignDisplay.module.css';
 
 export default function CampaignDisplay({ CampaignID, SiteName, Description, Type, Mobile, OnChoice }) {
-	let history = useHistory();
+	let navigate = useNavigate();
 
 	const theme = createTheme({
 		palette: {
@@ -37,13 +37,13 @@ export default function CampaignDisplay({ CampaignID, SiteName, Description, Typ
 	});
 
 	const goToLink = path => {
-		history.push(path);
+		navigate(path);
 		Mobile && OnChoice();
 	}
 
 	return (
 		<ThemeProvider theme={theme}>
-			<Button onClick={() => goToLink(`/out/${CampaignID}`)}>
+			<Button onClick={() => goToLink(`/out/${CampaignID}`)} aria-label="Go to referral campaign">
 				<div className={classes.campaignContentOuter}>
 					<span className={classes.campaignType}>{ Type === 'referral' ? 'Referral' : 'Affiliate Link' }</span>
 					<br />

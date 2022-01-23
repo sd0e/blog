@@ -1,13 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, Suspense, lazy } from 'react';
 import { IconButton, createTheme, ThemeProvider, SwipeableDrawer, Button } from '@mui/material';
 import { Menu } from '@mui/icons-material';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import classes from './Layout.module.css';
-import NavMenu from './NavMenu';
+import InfoCard from '../ui/InfoCard';
+const NavMenu = lazy(() => import('./NavMenu'));
 
 export default function Layout({ children }) {
-	let history = useHistory();
+	let navigate = useNavigate();
 
 	const [isMobile, setIsMobile] = useState(window.innerWidth < 870);
 	const [compactMode, setCompactMode] = useState(window.innerWidth <= 405);
@@ -50,9 +51,20 @@ export default function Layout({ children }) {
 		},
 	});
 
+	const handleScroll = e => {
+		if (window.location.pathname === '/' || window.location.pathname.includes('/category/')) {
+			const el = document.getElementById('end');
+			var rect = el.getBoundingClientRect();
+			var elemTop = rect.top;
+			var elemBottom = rect.bottom;
+			const bottom = (elemTop >= 0) && (elemBottom <= window.innerHeight);
+			if (bottom) window['bottomReached']();
+		}
+	}
+
 	if (!isMobile) {
 		return (
-			<main className={classes.allContainer}>
+			<main className={classes.allContainer} onScroll={handleScroll}>
 				<table className={classes.tableContainer}>
 					<tbody>
 						<tr>
@@ -60,7 +72,9 @@ export default function Layout({ children }) {
 								{children}
 							</th>
 							<th className={classes.rightColumn}>
-								<NavMenu />
+								<Suspense fallback={ <InfoCard Loading /> }>
+									<NavMenu />
+								</Suspense>
 							</th>
 						</tr>
 					</tbody>
@@ -77,19 +91,23 @@ export default function Layout({ children }) {
 					onOpen={() => setNavBarOpen(true)}
 				>
 					<div className={classes.mobileNavMenuHolder}>
-						<NavMenu Mobile OnChoice={() => setNavBarOpen(false)} CompactMode={compactMode} />
+						<Suspense fallback={ <InfoCard Loading /> }>
+							<NavMenu Mobile OnChoice={() => setNavBarOpen(false)} CompactMode={compactMode} />
+						</Suspense>
 					</div>
 				</SwipeableDrawer>
 				<header className={classes.mobileHeader}>
 					<div className={classes.mobileHeaderLeft}>
-						<IconButton size="medium" onClick={() => setNavBarOpen(true)}>
+						<IconButton size="medium" onClick={() => setNavBarOpen(true)} aria-label="open menu">
 							<Menu fontSize="medium" style={{ color: '#cccccc' }} />
 						</IconButton>
-						<Button onClick={() => history.push('/')}>Sebastian Doe</Button>
+						<Button onClick={() => navigate('/')} aria-label="home">Sebastian Doe</Button>
 					</div>
 				</header>
-				<div className={classes.mobileContent}>
-					{children}
+				<div className={classes.mobileContentOuter} onScroll={handleScroll} onTouchMove={handleScroll}>
+					<div className={classes.mobileContent}>
+						{children}
+					</div>
 				</div>
 			</ThemeProvider>
 		)

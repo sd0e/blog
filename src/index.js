@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter } from 'react-router-dom';
 import { initializeApp } from 'firebase/app';
 import { getAnalytics } from 'firebase/analytics';
 
@@ -22,8 +21,6 @@ const app = initializeApp(firebaseConfig);
 getAnalytics(app);
 
 ReactDOM.render(
-    <BrowserRouter>
-        <App />
-    </BrowserRouter>,
+    <App />,
     document.getElementById('root')
 );

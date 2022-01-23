@@ -26,5 +26,5 @@
 .postButtonCategory {
 	font-size: 0.8rem;
 	font-weight: 600;
-	filter: opacity(0.8);
+	filter: contrast(1.25);
 }

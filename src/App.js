@@ -1,39 +1,52 @@
-import React, { useState, useEffect } from 'react';
-import { Redirect, Route, Switch } from 'react-router-dom';
+import React, { Suspense, lazy } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
+import InfoCard from './components/ui/InfoCard';
 import Layout from './components/layout/Layout';
-import Home from './pages/Home';
-import About from './pages/About';
-import Article from './pages/Article';
-import Out from './pages/Out';
-import Category from './pages/Category';
-import PageHead from './PageHead';
-import GeneratePageTitle from './scripts/GeneratePageTitle';
+const Home = lazy(() => import('./pages/Home'));
+const About = lazy(() => import('./pages/About'));
+const Article = lazy(() => import('./pages/Article'));
+const Out = lazy(() => import('./pages/Out'));
+const Category = lazy(() => import('./pages/Category'));
 
 function App() {
     return (
-        <Layout>
-            <Switch>
-                <Route path="/" exact>
-                    <PageHead Title={GeneratePageTitle('Home')} />
-                    <Home />
-                </Route>
-                <Route path="/about" exact>
-                    <PageHead Title={GeneratePageTitle('About')} />
-                    <About />
-                </Route>
-                <Route path="/article">
-                    <Article />
-                </Route>
-                <Route path="/out">
-                    <Out />
-                </Route>
-                <Route path="/category">
-                    <Category />
-                </Route>
-                <Redirect to="/" />
-            </Switch>
-        </Layout>
+        <BrowserRouter>
+            <Layout>
+                    <Routes>
+                        <Route path="/" element={
+                            <Suspense fallback={ <InfoCard Loading /> }>
+                                <Home />
+                            </Suspense>
+                        } />
+                        <Route path="/about" element={
+                            <Suspense fallback={ <InfoCard Loading /> }>
+                                <About />
+                            </Suspense>
+                        } />
+                        <Route path="/article/*" element={
+                            <Suspense fallback={ <InfoCard Loading /> }>
+                                <Article />
+                            </Suspense>
+                        } />
+                        <Route path="/out/*" element={
+                            <Suspense fallback={ <InfoCard Loading /> }>
+                                <Out />
+                            </Suspense>
+                        } />
+                        <Route path="/category/*" element={
+                            <Suspense fallback={ <InfoCard Loading /> }>
+                                <Category />
+                            </Suspense>
+                        } />
+                        <Route path="*" element={
+                            <Suspense fallback={ <InfoCard Loading /> }>
+                                <Home />
+                            </Suspense>
+                        } />
+                    </Routes>
+            </Layout>
+        </BrowserRouter>
     );
 }
 

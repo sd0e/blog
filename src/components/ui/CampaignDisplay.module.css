@@ -5,7 +5,7 @@
 .campaignType {
 	text-transform: uppercase;
 	letter-spacing: 0.15rem;
-	color: rgba(153, 153, 153, 0.8);
+	color: rgba(153, 153, 153, 0.9);
 	display: block;
 	font-size: 0.9rem;
 	font-weight: 500;
@@ -20,7 +20,7 @@
 }
 
 .campaignDescription {
-	color: rgba(153, 153, 153, 0.8);
+	color: rgba(153, 153, 153, 0.9);
 	display: block;
 	font-size: 0.9rem;
 	font-weight: 400;

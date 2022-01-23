@@ -33,7 +33,7 @@ export default function PostButton({ children, Date, Category, CategoryColour, C
 
 	return (
 		<ThemeProvider theme={theme}>
-			<Button onClick={Click}>
+			<Button onClick={Click} aria-label={`Go to the following post: ${children}`}>
 				<div className={classes.postButtonContainerOuter}>
 					<span className={classes.postButtonTitle}>{children}</span>
 					<div className={classes.postButtonBottomContentContainer}>

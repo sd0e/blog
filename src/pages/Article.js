@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { HighlightOff } from '@mui/icons-material';
 
 import AddToAnalytics from '../scripts/AddToAnalytics';
@@ -13,9 +13,9 @@ import ArticleInfoPane from '../components/ui/ArticleInfoPane';
 import SearchArticles from '../scripts/SearchArticles';
 
 export default function Article() {
-	let history = useHistory();
+	let location = useLocation();
 	
-	const words = history.location.pathname.split('/').pop().split('-');
+	const words = location.pathname.split('/').pop().split('-');
 
 	var completedWord = '';
 
@@ -30,7 +30,7 @@ export default function Article() {
 	const [articleContent, setArticleContent] = useState('Loading');
 	
 	useEffect(() => {
-		AddToAnalytics(`Article | ${words.join('-')}`, history.location.pathname);
+		AddToAnalytics(`Article | ${words.join('-')}`, location.pathname);
 
 		Fetch(`/blog/posts/${words.join('-')}`).then(articleResult => {
 			if (articleResult !== undefined && articleResult !== null) {

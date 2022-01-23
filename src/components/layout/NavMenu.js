@@ -1,16 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button, createTheme, IconButton, ThemeProvider } from '@mui/material';
 import { Add, Close, Info, OpenInNew, Search } from '@mui/icons-material';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import Fetch from '../../scripts/Fetch';
 
 import classes from './NavMenu.module.css';
 import MainNavButton from '../ui/MainNavButton';
 import CampaignDisplay from '../ui/CampaignDisplay';
+import InfoCard from '../ui/InfoCard';
 
 export default function NavMenu({ Mobile, OnChoice, CompactMode }) {
 	const [searchInputVal, setSearchInputVal] = useState('');
+	const [campaign, setCampaign] = useState('Loading');
 	
-	let history = useHistory();
+	let navigate = useNavigate();
+
+	useEffect(() => {
+		Fetch('/campaigns/main').then(fetchedCampaign => setCampaign(fetchedCampaign));
+	}, []);
 
 	const darkTheme = createTheme({
 		palette: {
@@ -60,17 +67,17 @@ export default function NavMenu({ Mobile, OnChoice, CompactMode }) {
 
 	const goToLink = (path, openInNew = false) => {
 		if (openInNew) window.open(path);
-		else history.push(path);
+		else navigate(path);
 		Mobile && OnChoice();
 	}
 
 	return (
-		<div className={classes.flexDiv}>
+		<div className={ Mobile ? classes.flexDivMobile : classes.flexDiv }>
 			<div>
 				{
 					Mobile &&
 					<div className={classes.mobileMenuCloseContainer}>
-						<IconButton size="small" onClick={OnChoice}>
+						<IconButton size="small" onClick={OnChoice} aria-label="close menu">
 							<Close fontSize="small" />
 						</IconButton>
 					</div>
@@ -94,22 +101,24 @@ export default function NavMenu({ Mobile, OnChoice, CompactMode }) {
 								</tr>
 							</tbody>
 						</table>
-						<Button>
+						<Button aria-label="categories">
 							Categories
 							<Add fontSize="small" />
 						</Button>
-						<Button onClick={() => goToLink('/about')}>
+						<Button onClick={() => goToLink('/about')} aria-label="about">
 							<span style={{ color: "#9ea4b0" }}>About This Blog</span>
 							<Info fontSize="small" style={{ color: "#9ea4b0" }} />
 						</Button>
-						<Button onClick={() => goToLink('https://git.sebdoe.com/', true)}>
+						<Button onClick={() => goToLink('https://git.sebdoe.com/', true)} aria-label="personal website">
 							<span style={{ color: "#74ba74" }}>Personal Website</span>
 							<OpenInNew fontSize="small" style={{ color: "#74ba74" }} />
 						</Button>
 					</div>
 				</ThemeProvider>
 			</div>
-			<CampaignDisplay CampaignID="amazon" SiteName="Amazon" Description="Get 50% off all Amazon purchases by clicking here" Type="referral" Mobile={Mobile} OnChoice={OnChoice} />
+			{ campaign === 'Loading' ? <InfoCard Loading>Loading</InfoCard> :
+				<CampaignDisplay CampaignID={campaign.name.toLowerCase().split(' ').join('-')} SiteName={campaign.name} Description={campaign.description} Type={campaign.type === 'ref' ? 'referral' : 'affiliate'} Mobile={Mobile} OnChoice={OnChoice} />
+			}
 		</div>
 	)
 }
