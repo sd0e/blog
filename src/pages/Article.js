@@ -11,6 +11,7 @@ import MarkdownDisplay from '../components/ui/MarkdownDisplay';
 import ArticleTitle from '../components/ui/ArticleTitle';
 import ArticleInfoPane from '../components/ui/ArticleInfoPane';
 import SearchArticles from '../scripts/SearchArticles';
+import StringFromDate from '../scripts/StringFromDate';
 
 export default function Article() {
 	let location = useLocation();
@@ -61,6 +62,8 @@ export default function Article() {
 						<div>
 							<PageHead
 								Title={GeneratePageTitle(articleTitle)}
+								ArticleName={articleTitle}
+								ArticleDate={StringFromDate(articleContent['date'], 'SEO')}
 							/>
 							<ArticleTitle>{articleTitle}</ArticleTitle>
 							<ArticleInfoPane Date={articleContent['date']} Category={articleContent['category']} ArticleName={articleTitle} />
