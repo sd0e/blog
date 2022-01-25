@@ -29,7 +29,7 @@ export default function PageHead({ Title, ArticleName, ArticleDate }) {
 						"name": "Sebastian Doe"
 					},
 					"datePublished": "${ArticleDate}",
-					"inLanguage": "en-GB",
+					"inLanguage": "en-GB"
 				}
 			`}</script> }
 			<title>{Title}</title>
