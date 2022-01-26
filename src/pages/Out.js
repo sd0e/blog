@@ -91,6 +91,7 @@ export default function Out() {
 
 					<ThemeProvider theme={theme}>
 						<Button onClick={() => {
+							AddToAnalytics(`Site Leave: ${campaign.name}`, window.location.href);
 							window.open(campaign.url);
 							navigate(-1);
 						}}>Go</Button>
