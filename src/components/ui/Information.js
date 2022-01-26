@@ -7,7 +7,7 @@ export default function Information({ Title, children, Article }) {
   	return (
 		<div className={Article ? classes.informationOuterArticle : classes.informationOuter}>
 			<div className={classes.iconHolder}>
-				<img src={icon} alt="Information" className={classes.icon}  />
+				<div className={classes.icon} />
 				<div className={classes.iconInfoHolder}>
 					<span className={classes.iconInfo}>i</span>
 				</div>

@@ -19,8 +19,16 @@
 }
 
 .icon {
-	width: 100%;
+	display: block;
+	width: 2.75rem;
+	height: 2.75rem;
 	position: absolute;
+	background: rgb(35,17,72);background: rgb(35,17,72);
+	background: -moz-linear-gradient(45deg, rgba(35,17,72,1) 0%, rgba(27,19,144,1) 40%, rgba(14,21,251,1) 100%);
+	background: -webkit-linear-gradient(45deg, rgba(35,17,72,1) 0%, rgba(27,19,144,1) 40%, rgba(14,21,251,1) 100%);
+	background: linear-gradient(45deg, rgba(35,17,72,1) 0%, rgba(27,19,144,1) 40%, rgba(14,21,251,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#231148",endColorstr="#0e15fb",GradientType=1);
+	border-radius: 0.5rem;
 }
 
 .iconInfoHolder {
