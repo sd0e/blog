@@ -124,6 +124,9 @@ export default function Layout({ children }) {
 						<Button onClick={() => navigate('/')} aria-label="home">Sebastian Doe</Button>
 					</div>
 				</header>
+				<div className={classes.dialogBoxContainer}>
+					<DialogContainer alerts={JSON.parse(alerts)} removeDialogBox={removeDialogBox} />
+				</div>
 				<div className={classes.mobileContentOuter} onScroll={handleScroll} onTouchMove={handleScroll}>
 					<div className={classes.mobileContent}>
 						{children}
