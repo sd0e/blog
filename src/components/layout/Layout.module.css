@@ -65,3 +65,9 @@
 	padding: 3rem;
 	background-color: #141313;
 }
+
+.dialogBoxContainer {
+	position: fixed;
+	right: 1.5rem;
+	top: 1.5rem;
+}

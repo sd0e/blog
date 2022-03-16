@@ -3,6 +3,8 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { IconButton, createTheme, ThemeProvider } from '@mui/material';
+import { ContentCopy } from '@mui/icons-material';
 
 import Information from './Information';
 
@@ -20,6 +22,20 @@ export default function MarkdownDisplay({ StoryContent }) {
 		});
 	}
 
+	const theme = createTheme({
+		palette: {
+			mode: 'dark',
+		},
+	});
+
+	const copy = text => {
+		navigator.clipboard.writeText(text).then(() => {
+			alert('Text successfully copied', 0);
+		}, err => {
+			alert('Error copying text', 2);
+		});
+	}
+
 	return (
 		<ReactMarkdown
 			children={StoryContent}
@@ -28,13 +44,24 @@ export default function MarkdownDisplay({ StoryContent }) {
 				code({ node, inline, className, children, ...props }) {
 					const match = /language-(\w+)/.exec(className || '');
 					return !inline && match ? (
-						<SyntaxHighlighter
-							children={String(children).replace(/\n$/, '')}
-							style={atomDark}
-							language={match[1]}
-							PreTag="div"
-							{ ...props }
-						/>
+						<div style={{ position: 'relative' }}>
+							<div style={{ position: 'absolute', width: '100%' }}>
+								<div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+									<ThemeProvider theme={theme}>
+										<IconButton style={{ top: '0.5rem', right: '0.5rem' }} onClick={() => copy(children)}>
+											<ContentCopy fontSize='small' style={{ fill: 'rgba(242, 242, 242, 0.6)' }} />
+										</IconButton>
+									</ThemeProvider>
+								</div>
+							</div>
+							<SyntaxHighlighter
+								children={String(children).replace(/\n$/, '')}
+								style={atomDark}
+								language={match[1]}
+								PreTag="div"
+								{ ...props }
+							/>
+						</div>
 					) : (
 						<code className={className} {...props}>
 							{children}

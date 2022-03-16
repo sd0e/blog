@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 import classes from './Layout.module.css';
 import InfoCard from '../ui/InfoCard';
+import DialogBox from '../ui/DialogBox';
 const NavMenu = lazy(() => import('./NavMenu'));
 
 export default function Layout({ children }) {
@@ -65,6 +66,9 @@ export default function Layout({ children }) {
 	if (!isMobile) {
 		return (
 			<main className={classes.allContainer} onScroll={handleScroll}>
+				<div className={classes.dialogBoxContainer}>
+					<DialogBox text="Alert" severity={0} />
+				</div>
 				<table className={classes.tableContainer}>
 					<tbody>
 						<tr>
