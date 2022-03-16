@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 import classes from './Layout.module.css';
 import InfoCard from '../ui/InfoCard';
-import DialogBox from '../ui/DialogBox';
+import DialogContainer from '../ui/DialogContainer';
 const NavMenu = lazy(() => import('./NavMenu'));
 
 export default function Layout({ children }) {
@@ -14,6 +14,7 @@ export default function Layout({ children }) {
 	const [isMobile, setIsMobile] = useState(window.innerWidth < 870);
 	const [compactMode, setCompactMode] = useState(window.innerWidth <= 405);
 	const [navBarOpen, setNavBarOpen] = useState(false);
+	const [alerts, setAlerts] = useState(JSON.stringify({}));
 
 	const checkIsMobile = () => {
 		const windowWidth = window.innerWidth;
@@ -63,11 +64,26 @@ export default function Layout({ children }) {
 		}
 	}
 
+	window.alert = (message, severity = 0) => {
+		let alertsTemp = JSON.parse(alerts);
+		alertsTemp[new Date().getTime().toString()] = {
+			message: message,
+			severity: severity
+		}
+		setAlerts(JSON.stringify(alertsTemp));
+	}
+
+	const removeDialogBox = alertKey => {
+		let alertsTemp = JSON.parse(alerts);
+		delete alertsTemp[alertKey];
+		setAlerts(JSON.stringify(alertsTemp));
+	}
+
 	if (!isMobile) {
 		return (
 			<main className={classes.allContainer} onScroll={handleScroll}>
 				<div className={classes.dialogBoxContainer}>
-					<DialogBox text="Alert" severity={0} />
+					<DialogContainer alerts={JSON.parse(alerts)} removeDialogBox={removeDialogBox} />
 				</div>
 				<table className={classes.tableContainer}>
 					<tbody>

@@ -30,7 +30,7 @@ export default function MarkdownDisplay({ StoryContent }) {
 
 	const copy = text => {
 		navigator.clipboard.writeText(text).then(() => {
-			alert('Text successfully copied', 0);
+			alert('Text successfully copied', 1);
 		}, err => {
 			alert('Error copying text', 2);
 		});
