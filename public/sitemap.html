@@ -1,0 +1,11 @@
+<script>
+    const request = new XMLHttpRequest();
+
+    const onRequest = () => {
+        document.write(this.responseText);
+    }
+
+    request.addEventListener('load', onRequest);
+    request.open('GET', 'https://sebdoe-api.herokuapp.com/sitemap.xml');
+    request.send();
+</script>
