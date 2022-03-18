@@ -2,10 +2,12 @@
     const xhr = new XMLHttpRequest();
     xhr.open('GET', 'https://sebdoe-api.herokuapp.com/sitemap.xml', true);
 
-    xhr.responseType = 'json';
+    xhr.responseType = 'document';
 
     xhr.onload = () => {
-        document.write(xhr.response);
+        var serializer = new XMLSerializer();
+        var xmlString = serializer.serializeToString(xhr.responseXML);
+        document.write(`<xml>${xmlString}</xml>`);
     }
 
     xhr.onerror = () => {
