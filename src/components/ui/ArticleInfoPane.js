@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { ThemeProvider, createTheme, IconButton, Button, Menu, MenuItem, ListItemIcon, Paper } from '@mui/material';
-import { Reddit, Share, Twitter } from '@mui/icons-material';
+import { Reddit, Share, Twitter, Comment } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
 
 import classes from './ArticleInfoPane.module.css';
 import StringFromDate from '../../scripts/StringFromDate';
 
-export default function ArticleInfoPane({ Date, Category, ArticleName }) {
+export default function ArticleInfoPane({ Date, Category, ArticleName, Comments }) {
 	const [anchorElement, setAnchorElement] = useState(null);
 
 	let navigate = useNavigate();
@@ -74,6 +74,10 @@ export default function ArticleInfoPane({ Date, Category, ArticleName }) {
 							</MenuItem>
 						</Paper>
 					</Menu>
+				{ Comments && <Button size="small" color="primary" onClick={() => window.open(`https://twitter.com/sebdoe_blog/status/${Comments}`)} aria-label="Open Comments" style={{ marginLeft: "2rem" }}>
+					<Comment fontSize="small" style={{ marginRight: "1rem" }} />
+					Discuss on Twitter
+				</Button> }
 			</ThemeProvider>
 		</div>
 	)
