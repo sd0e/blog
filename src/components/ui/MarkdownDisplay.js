@@ -69,10 +69,13 @@ export default function MarkdownDisplay({ StoryContent }) {
 					)
 				},
 				p({ children, props }) {
-					if (children[0].includes('|||')) {
-						children = children[0].split('|||');
-						return <Information Title={children[0]} Article>{children[1]}</Information>
-					} else return <p {...props}>{children}</p>;
+					if (typeof children[0] === 'string') {
+						if (children[0].includes('|||')) {
+							children = children[0].split('|||');
+							return <Information Title={children[0]} Article>{children[1]}</Information>
+						} else return <p {...props}>{children}</p>;
+					}
+					else return <p {...props}>{children}</p>;
 				}
 			}}
 		/>
