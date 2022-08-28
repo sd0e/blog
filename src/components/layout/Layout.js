@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import classes from './Layout.module.css';
 import InfoCard from '../ui/InfoCard';
 import DialogContainer from '../ui/DialogContainer';
+import { ReactComponent as HeaderIcon } from '../../assets/SVG/square_icon.svg';
 const NavMenu = lazy(() => import('./NavMenu'));
 
 export default function Layout({ children }) {
@@ -79,7 +80,41 @@ export default function Layout({ children }) {
 		setAlerts(JSON.stringify(alertsTemp));
 	}
 
-	if (!isMobile) {
+	if (isMobile) {
+		return (
+			<ThemeProvider theme={theme}>
+				<SwipeableDrawer
+					anchor="left"
+					open={navBarOpen}
+					onClose={() => setNavBarOpen(false)}
+					onOpen={() => setNavBarOpen(true)}
+				>
+					<div className={classes.mobileNavMenuHolder}>
+						<Suspense fallback={ <InfoCard Loading /> }>
+							<NavMenu Mobile OnChoice={() => setNavBarOpen(false)} CompactMode={compactMode} />
+						</Suspense>
+					</div>
+				</SwipeableDrawer>
+				<header className={classes.mobileHeader}>
+					<div className={classes.mobileHeaderLeft}>
+						<IconButton size="medium" onClick={() => setNavBarOpen(true)} aria-label="open menu">
+							<Menu fontSize="medium" style={{ color: '#cccccc' }} />
+						</IconButton>
+						<Button onClick={() => navigate('/')} aria-label="home">
+						<HeaderIcon className={classes.mobileHeaderIcon} />Seb Doe</Button>
+					</div>
+				</header>
+				<div className={classes.dialogBoxContainer}>
+					<DialogContainer alerts={JSON.parse(alerts)} removeDialogBox={removeDialogBox} />
+				</div>
+				<div className={classes.mobileContentOuter} onScroll={handleScroll} onTouchMove={handleScroll}>
+					<div className={classes.mobileContent}>
+						{children}
+					</div>
+				</div>
+			</ThemeProvider>
+		)
+	} else {
 		return (
 			<main className={classes.allContainer} onScroll={handleScroll}>
 				<div className={classes.dialogBoxContainer}>
@@ -100,39 +135,6 @@ export default function Layout({ children }) {
 					</tbody>
 				</table>
 			</main>
-		)
-	} else {
-		return (
-			<ThemeProvider theme={theme}>
-				<SwipeableDrawer
-					anchor="left"
-					open={navBarOpen}
-					onClose={() => setNavBarOpen(false)}
-					onOpen={() => setNavBarOpen(true)}
-				>
-					<div className={classes.mobileNavMenuHolder}>
-						<Suspense fallback={ <InfoCard Loading /> }>
-							<NavMenu Mobile OnChoice={() => setNavBarOpen(false)} CompactMode={compactMode} />
-						</Suspense>
-					</div>
-				</SwipeableDrawer>
-				<header className={classes.mobileHeader}>
-					<div className={classes.mobileHeaderLeft}>
-						<IconButton size="medium" onClick={() => setNavBarOpen(true)} aria-label="open menu">
-							<Menu fontSize="medium" style={{ color: '#cccccc' }} />
-						</IconButton>
-						<Button onClick={() => navigate('/')} aria-label="home">Sebastian Doe</Button>
-					</div>
-				</header>
-				<div className={classes.dialogBoxContainer}>
-					<DialogContainer alerts={JSON.parse(alerts)} removeDialogBox={removeDialogBox} />
-				</div>
-				<div className={classes.mobileContentOuter} onScroll={handleScroll} onTouchMove={handleScroll}>
-					<div className={classes.mobileContent}>
-						{children}
-					</div>
-				</div>
-			</ThemeProvider>
 		)
 	}
 }

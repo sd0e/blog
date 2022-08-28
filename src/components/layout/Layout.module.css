@@ -31,12 +31,16 @@
 }
 
 .mobileHeader {
-	background-color: #201e1e;
+	background-color: #191919;
 	color: #cccccc;
 	padding: 0.5rem 1rem;
-	-webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
-	-moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
-	box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+}
+
+.mobileHeaderIcon {
+	height: 1rem;
+	width: 1rem;
+	margin-right: 1rem;
+	border-radius: 0.25rem;
 }
 
 .mobileHeaderLeft {
@@ -63,7 +67,7 @@
 	max-width: calc(100vw - 6rem);
 	height: 100%;
 	padding: 3rem;
-	background-color: #141313;
+	background-color: #191919;
 }
 
 .dialogBoxContainer {

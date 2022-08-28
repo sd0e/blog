@@ -42,11 +42,11 @@ export default function NavMenu({ OnClick, CompactMode }) {
 								{
 									!CompactMode &&
 									<th className={classes.leftIcon}>
-										<div alt="Sebastian Doe Icon" className={classes.icon}></div>
+										<div alt="Seb Doe Icon" className={classes.icon}></div>
 									</th>
 								}
 								<th className={classes.rightDescription}>
-									<span className={classes.siteName}>Sebastian Doe</span>
+									<span className={classes.siteName}>Seb Doe</span>
 									<span className={classes.siteSubtitle}>Programming Blog</span>
 								</th>
 							</tr>

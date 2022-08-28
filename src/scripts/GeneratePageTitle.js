@@ -1,5 +1,5 @@
 const GeneratePageTitle = pageName => {
-	return `${pageName} | Sebastian Doe`;
+	return `${pageName} | Seb Doe`;
 }
 
 export default GeneratePageTitle;

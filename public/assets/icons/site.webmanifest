@@ -1,6 +1,6 @@
 {
-    "name": "Sebastian Doe",
-    "short_name": "Sebastian Doe",
+    "name": "Seb Doe",
+    "short_name": "Seb Doe",
     "icons": [
         {
             "src": "/assets/icons/android-chrome-192x192.png",
@@ -15,8 +15,8 @@
             "purpose": "any maskable"
         }
     ],
-    "theme_color": "#141313",
-    "background_color": "#141313",
+    "theme_color": "#191919",
+    "background_color": "#191919",
     "display": "standalone",
     "start_url": "/",
 }

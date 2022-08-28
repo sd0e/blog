@@ -55,27 +55,24 @@ export default function Home() {
 	return (
 		<div>
 			<PageHead Title={GeneratePageTitle('Home')} />
-			<BrowseTopHeading>Recent Posts</BrowseTopHeading>
-			<PostListContainer>
-				{
-					categoryArticles === 'Loading' ?
-						<InfoCard Loading>Loading</InfoCard>
-					:
-						categoryArticles.map(categoryArticle => {
-							// [0] is the article title, [1] is its UTC publish time in ms, [2] is the category name, [3] is the category colour
-							const categoryArticleArray = categoryArticle.split('|||');
-							const timeString = StringFromDate(categoryArticleArray[1]);
-							return <PostButton Date={timeString} key={categoryArticleArray[0]} Category={categoryArticleArray[2]} CategoryColour={`#${categoryArticleArray[3]}`} Click={() => {
-								navigate(`/article/${categoryArticleArray[0].toLowerCase().split(' ').join('-')}`);
-							}}>{categoryArticleArray[0]}</PostButton>
-						})
-				}
-				<div id="end">{ earliestPageNum === 'Progress' && categoryArticles !== 'Loading' &&
-					<ThemeProvider theme={theme}>
-						<LinearProgress />
-					</ThemeProvider>
-				}</div>
-			</PostListContainer>
+			{
+				categoryArticles === 'Loading' ?
+					<InfoCard Loading>Loading</InfoCard>
+				:
+					categoryArticles.map(categoryArticle => {
+						// [0] is the article title, [1] is its UTC publish time in ms, [2] is the category name, [3] is the category colour
+						const categoryArticleArray = categoryArticle.split('|||');
+						const timeString = StringFromDate(categoryArticleArray[1]);
+						return <PostButton Date={timeString} key={categoryArticleArray[0]} Category={categoryArticleArray[2]} CategoryColour={`#${categoryArticleArray[3]}`} Click={() => {
+							navigate(`/article/${categoryArticleArray[0].toLowerCase().split(' ').join('-')}`);
+						}}>{categoryArticleArray[0]}</PostButton>
+					})
+			}
+			<div id="end">{ earliestPageNum === 'Progress' && categoryArticles !== 'Loading' &&
+				<ThemeProvider theme={theme}>
+					<LinearProgress />
+				</ThemeProvider>
+			}</div>
 		</div>
 	);
 }

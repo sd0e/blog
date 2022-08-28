@@ -23,7 +23,7 @@ export default function PostButton({ children, Date, Category, CategoryColour, C
 						justifyContent: "flex-start",
 						padding: "1.5rem 2rem",
 						borderRadius: "0.75rem",
-						background: "#191717",
+						border: "1px solid rgba(255, 255, 255, 0.1)",
 						marginBottom: "1rem",
 					},
 				},
