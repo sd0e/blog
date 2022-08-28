@@ -40,7 +40,7 @@ export default function NavMenu({ OnClick, CompactMode }) {
 								{
 									!CompactMode &&
 									<th className={classes.leftIcon}>
-										<img src={Icon} alt="Seb Doe Icon" className={classes.icon} />
+										<img src={Icon} alt="Seb Doe Icon" className={classes.icon} draggable="false" />
 									</th>
 								}
 								<th className={classes.rightDescription}>

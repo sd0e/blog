@@ -102,7 +102,7 @@ export default function Layout({ children }) {
 						</IconButton>
 						<Button onClick={() => navigate('/')} aria-label="home">
 							<div className={classes.mobileHeaderButtonFlex}>
-								<img src={HeaderIcon} className={classes.mobileHeaderIcon} alt="Seb Doe Icon" />
+								<img src={HeaderIcon} className={classes.mobileHeaderIcon} alt="Seb Doe Icon" draggable="false" />
 								Seb Doe
 							</div>
 						</Button>
