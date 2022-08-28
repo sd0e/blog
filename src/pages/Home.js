@@ -5,8 +5,6 @@ import { LinearProgress, ThemeProvider, createTheme } from '@mui/material';
 import AddToAnalytics from '../scripts/AddToAnalytics';
 import PageHead from '../PageHead';
 import GeneratePageTitle from '../scripts/GeneratePageTitle';
-import BrowseTopHeading from '../components/ui/BrowseTopHeading';
-import PostListContainer from '../components/layout/PostListContainer';
 import PostButton from '../components/ui/PostButton';
 import StringFromDate from '../scripts/StringFromDate';
 import Fetch from '../scripts/Fetch';

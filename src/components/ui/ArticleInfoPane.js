@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ThemeProvider, createTheme, IconButton, Button, Menu, MenuItem, ListItemIcon, Paper } from '@mui/material';
+import { ThemeProvider, createTheme, IconButton, Button, Grid, Menu, MenuItem, ListItemIcon, Paper } from '@mui/material';
 import { Reddit, Share, Twitter, Comment } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
 
@@ -47,33 +47,42 @@ export default function ArticleInfoPane({ Date, Category, ArticleName, Comments 
 	return (
 		<div className={classes.articleInfoPaneOuter}>
 			<ThemeProvider theme={theme}>
-				<span className={classes.articleInfoDate}>{dateString}</span>
-				<IconButton id="share-button" size="small" color="primary" aria-controls="share-menu" aria-haspopup="true" aria-expanded={ isOpen ? 'true' : undefined } onClick={e => setAnchorElement(e.currentTarget)} aria-label="Share">
-					<Share fontSize="12px" />
-				</IconButton>
-				<Menu id="share-menu" anchorEl={anchorElement} open={isOpen} onClose={() => setAnchorElement(null)} MenuListProps={{ 'aria-labelledby': 'share-button', 'aria-controls': false }}>
-					<Paper sx={{ width: 200, maxWidth: '100%', backgroundColor: 'rgba(0, 0, 0, 0)' }} elevation={0}>
-						<MenuItem onClick={() => shareArticle('twitter')}>
-							<ListItemIcon>
-								<Twitter className={classes.shareMenuIcon} fontSize="16px" />
-							</ListItemIcon>
-							<span className={classes.shareMenuItemText}>Twitter</span>
-						</MenuItem>
-						<MenuItem onClick={() => shareArticle('reddit')}>
-							<ListItemIcon>
-								<Reddit className={classes.shareMenuIcon} fontSize="16px" />
-							</ListItemIcon>
-							<span className={classes.shareMenuItemText}>Reddit</span>
-						</MenuItem>
-					</Paper>
-				</Menu>
-				{ Comments && <IconButton size="small" color="primary" onClick={() => window.open(`https://twitter.com/sebdoe_blog/status/${Comments}`)} aria-label="Open Twitter Comments" style={{ marginLeft: "1rem" }}>
-					<Comment fontSize="small" />
-				</IconButton> }
-				<Button style={{ display: 'inline-block', marginLeft: '3rem' }} onClick={() => navigate(`/category/${categoryName.toLowerCase()}`)} aria-label={`Go to ${categoryName}`}>
-					<div className={classes.categoryColorCircle} style={{ backgroundColor: `#${categoryHexColour}` }}></div>
-					<span className={classes.articleInfoCategory} style={{ color: `#${categoryHexColour}` }}>{categoryName}</span>
-				</Button>
+				<Grid container direction="row" rowSpacing={1} columnSpacing={5} alignItems="center">
+					<Grid item >
+						<span className={classes.articleInfoDate}>{dateString}</span>
+					</Grid>
+					<Grid item>
+						<IconButton id="share-button" size="small" color="primary" aria-controls="share-menu" aria-haspopup="true" aria-expanded={ isOpen ? 'true' : undefined } onClick={e => setAnchorElement(e.currentTarget)} aria-label="Share">
+							<Share fontSize="12px" />
+						</IconButton>
+						<Menu id="share-menu" anchorEl={anchorElement} open={isOpen} onClose={() => setAnchorElement(null)} MenuListProps={{ 'aria-labelledby': 'share-button', 'aria-controls': false }}>
+							<Paper sx={{ width: 200, maxWidth: '100%', backgroundColor: 'rgba(0, 0, 0, 0)' }} elevation={0}>
+								<MenuItem onClick={() => shareArticle('twitter')}>
+									<ListItemIcon>
+										<Twitter className={classes.shareMenuIcon} fontSize="16px" />
+									</ListItemIcon>
+									<span className={classes.shareMenuItemText}>Twitter</span>
+								</MenuItem>
+								<MenuItem onClick={() => shareArticle('reddit')}>
+									<ListItemIcon>
+										<Reddit className={classes.shareMenuIcon} fontSize="16px" />
+									</ListItemIcon>
+									<span className={classes.shareMenuItemText}>Reddit</span>
+								</MenuItem>
+							</Paper>
+						</Menu>
+						{ Comments && <IconButton size="small" color="primary" onClick={() => window.open(`https://twitter.com/sebdoe_blog/status/${Comments}`)} aria-label="Open Twitter Comments" style={{ marginLeft: "1rem" }}>
+							<Comment fontSize="small" />
+						</IconButton> }
+					</Grid>
+					<Grid item>
+						<Button onClick={() => navigate(`/category/${categoryName.toLowerCase()}`)} aria-label={`Go to ${categoryName}`}>
+							<div className={classes.categoryColorCircle} style={{ backgroundColor: `#${categoryHexColour}` }}></div>
+							<span className={classes.articleInfoCategory} style={{ color: `#${categoryHexColour}` }}>{categoryName}</span>
+						</Button>
+					</Grid>
+					
+				</Grid>
 			</ThemeProvider>
 		</div>
 	)

@@ -1,6 +1,5 @@
 import React from 'react';
 
-import icon from '../../assets/SVG/icon.svg';
 import classes from './Information.module.css';
 
 export default function Information({ Title, children, Article }) {

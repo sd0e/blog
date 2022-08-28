@@ -1,12 +1,13 @@
 .icon {
-	width: 3.5rem;
-	height: 3.5rem;
+	width: 2.5rem;
+	height: 2.5rem;
 	border-radius: 1rem;
 	background: rgb(35,17,72);background: rgb(35,17,72);
 	background: -moz-linear-gradient(45deg, rgba(35,17,72,1) 0%, rgba(27,19,144,1) 40%, rgba(14,21,251,1) 100%);
 	background: -webkit-linear-gradient(45deg, rgba(35,17,72,1) 0%, rgba(27,19,144,1) 40%, rgba(14,21,251,1) 100%);
 	background: linear-gradient(45deg, rgba(35,17,72,1) 0%, rgba(27,19,144,1) 40%, rgba(14,21,251,1) 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#231148",endColorstr="#0e15fb",GradientType=1);
+	background: url(../../assets/250h/icon.png);
 }
 
 .siteName {

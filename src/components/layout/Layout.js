@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import classes from './Layout.module.css';
 import InfoCard from '../ui/InfoCard';
 import DialogContainer from '../ui/DialogContainer';
-import { ReactComponent as HeaderIcon } from '../../assets/SVG/square_icon.svg';
+import HeaderIcon from '../../assets/250h/icon.png';
 const NavMenu = lazy(() => import('./NavMenu'));
 
 export default function Layout({ children }) {
@@ -101,7 +101,11 @@ export default function Layout({ children }) {
 							<Menu fontSize="medium" style={{ color: '#cccccc' }} />
 						</IconButton>
 						<Button onClick={() => navigate('/')} aria-label="home">
-						<HeaderIcon className={classes.mobileHeaderIcon} />Seb Doe</Button>
+							<div className={classes.mobileHeaderButtonFlex}>
+								<img src={HeaderIcon} className={classes.mobileHeaderIcon} alt="Seb Doe Icon" />
+								Seb Doe
+							</div>
+						</Button>
 					</div>
 				</header>
 				<div className={classes.dialogBoxContainer}>

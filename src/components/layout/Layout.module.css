@@ -48,6 +48,11 @@
 	align-items: center;
 }
 
+.mobileHeaderButtonFlex {
+	display: flex;
+	align-items: center;
+}
+
 .mobileContentOuter {
 	width: 100%;
 	display: flex;
@@ -55,11 +60,9 @@
 }
 
 .mobileContent {
-	width: 100%;
-	height: calc(100% - 2rem);
-	padding: 0.5rem;
-	padding-top: 0rem;
-	transform: scale(0.85);
+	width: calc(100% - 5rem);
+	height: calc(100% - 2.5rem);
+	padding: 1.5rem 2.5rem 1rem 2.5rem;
 }
 
 .mobileNavMenuHolder {

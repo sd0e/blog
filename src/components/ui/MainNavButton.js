@@ -1,12 +1,10 @@
 import React from 'react';
 import { Button, createTheme, ThemeProvider } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
+import Icon from '../../assets/250h/icon.png';
 
 import classes from './MainNavButton.module.css';
 
 export default function NavMenu({ OnClick, CompactMode }) {
-	let navigate = useNavigate();
-
 	const theme = createTheme({
 		palette: {
 			mode: "dark",
@@ -42,7 +40,7 @@ export default function NavMenu({ OnClick, CompactMode }) {
 								{
 									!CompactMode &&
 									<th className={classes.leftIcon}>
-										<div alt="Seb Doe Icon" className={classes.icon}></div>
+										<img src={Icon} alt="Seb Doe Icon" className={classes.icon} />
 									</th>
 								}
 								<th className={classes.rightDescription}>
