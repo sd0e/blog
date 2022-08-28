@@ -1,0 +1,8 @@
+.markdownDisplay td, .markdownDisplay th {
+	border: 1px solid rgba(50, 50, 50, 1);
+	padding: 1rem;
+}
+
+.markdownDisplay table {
+	border-collapse: collapse;
+}

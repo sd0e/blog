@@ -7,6 +7,7 @@ import { IconButton, createTheme, ThemeProvider } from '@mui/material';
 import { ContentCopy } from '@mui/icons-material';
 
 import Information from './Information';
+import classes from './MarkdownDisplay.module.css';
 
 export default function MarkdownDisplay({ StoryContent }) {
 	const campaignRegex = /\[out\|[a-z0-9-_ ]+\|[^\]]*\]/gi;
@@ -40,6 +41,7 @@ export default function MarkdownDisplay({ StoryContent }) {
 		<ReactMarkdown
 			children={StoryContent}
 			remarkPlugins={[ remarkGfm ]}
+			className={classes.markdownDisplay}
 			components={{
 				code({ node, inline, className, children, ...props }) {
 					const match = /language-(\w+)/.exec(className || '');
