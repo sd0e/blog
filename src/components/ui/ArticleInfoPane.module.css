@@ -12,11 +12,12 @@
 }
 
 .articleInfoCategory {
-	font-weight: 600;
+	color: #8e8c99;
 	display: inline-block;
 	text-transform: none;
 	font-size: 1rem;
 	font-family: 'Inter', sans-serif;
+	filter: opacity(0.6);
 }
 
 .shareMenuIcon {
@@ -29,4 +30,12 @@
 	display: inline-block;
 	font-family: 'Inter', sans-serif;
 	font-size: 0.95rem;
+}
+
+.categoryColorCircle {
+	width: 0.8rem;
+	height: 0.8rem;
+	border-radius: 0.5rem;
+	display: inline-block;
+	margin-right: 1rem;
 }

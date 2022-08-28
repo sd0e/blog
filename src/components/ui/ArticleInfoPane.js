@@ -18,10 +18,6 @@ export default function ArticleInfoPane({ Date, Category, ArticleName, Comments 
 	const categoryHexColour = Category.substr(-6);
 	const categoryName = Category.replace(categoryHexColour, '');
 
-	const openPopup = url => {
-		window.open(url, '', 'menubar=no, toolbar=no, resizable=yes, scrollbars=yes, height=400,width=800');
-	}
-
 	const shareArticle = platform => {
 		if (platform === 'twitter') window.open(`https://www.twitter.com/intent/tweet?url=${encodeURIComponent(window.location.href)}&text=${ArticleName}`);
 		else if (platform === 'reddit') window.open(`http://www.reddit.com/submit?url=${encodeURIComponent(window.location.href)}&title=${ArticleName}`);
@@ -52,32 +48,32 @@ export default function ArticleInfoPane({ Date, Category, ArticleName, Comments 
 		<div className={classes.articleInfoPaneOuter}>
 			<ThemeProvider theme={theme}>
 				<span className={classes.articleInfoDate}>{dateString}</span>
-				<Button style={{ display: 'inline-block', marginRight: '3rem' }} onClick={() => navigate(`/category/${categoryName.toLowerCase()}`)} aria-label={`Go to ${categoryName}`}>
-					<span className={classes.articleInfoCategory} style={{ color: `#${categoryHexColour}` }}>{categoryName}</span>
-				</Button>
 				<IconButton id="share-button" size="small" color="primary" aria-controls="share-menu" aria-haspopup="true" aria-expanded={ isOpen ? 'true' : undefined } onClick={e => setAnchorElement(e.currentTarget)} aria-label="Share">
 					<Share fontSize="12px" />
 				</IconButton>
-					<Menu id="share-menu" anchorEl={anchorElement} open={isOpen} onClose={() => setAnchorElement(null)} MenuListProps={{ 'aria-labelledby': 'share-button', 'aria-controls': false }}>
-						<Paper sx={{ width: 200, maxWidth: '100%', backgroundColor: 'rgba(0, 0, 0, 0)' }} elevation={0}>
-							<MenuItem onClick={() => shareArticle('twitter')}>
-								<ListItemIcon>
-									<Twitter className={classes.shareMenuIcon} fontSize="16px" />
-								</ListItemIcon>
-								<span className={classes.shareMenuItemText}>Twitter</span>
-							</MenuItem>
-							<MenuItem onClick={() => shareArticle('reddit')}>
-								<ListItemIcon>
-									<Reddit className={classes.shareMenuIcon} fontSize="16px" />
-								</ListItemIcon>
-								<span className={classes.shareMenuItemText}>Reddit</span>
-							</MenuItem>
-						</Paper>
-					</Menu>
-				{ Comments && <Button size="small" color="primary" onClick={() => window.open(`https://twitter.com/sebdoe_blog/status/${Comments}`)} aria-label="Open Comments" style={{ marginLeft: "2rem" }}>
-					<Comment fontSize="small" style={{ marginRight: "1rem" }} />
-					Discuss on Twitter
-				</Button> }
+				<Menu id="share-menu" anchorEl={anchorElement} open={isOpen} onClose={() => setAnchorElement(null)} MenuListProps={{ 'aria-labelledby': 'share-button', 'aria-controls': false }}>
+					<Paper sx={{ width: 200, maxWidth: '100%', backgroundColor: 'rgba(0, 0, 0, 0)' }} elevation={0}>
+						<MenuItem onClick={() => shareArticle('twitter')}>
+							<ListItemIcon>
+								<Twitter className={classes.shareMenuIcon} fontSize="16px" />
+							</ListItemIcon>
+							<span className={classes.shareMenuItemText}>Twitter</span>
+						</MenuItem>
+						<MenuItem onClick={() => shareArticle('reddit')}>
+							<ListItemIcon>
+								<Reddit className={classes.shareMenuIcon} fontSize="16px" />
+							</ListItemIcon>
+							<span className={classes.shareMenuItemText}>Reddit</span>
+						</MenuItem>
+					</Paper>
+				</Menu>
+				{ Comments && <IconButton size="small" color="primary" onClick={() => window.open(`https://twitter.com/sebdoe_blog/status/${Comments}`)} aria-label="Open Twitter Comments" style={{ marginLeft: "1rem" }}>
+					<Comment fontSize="small" />
+				</IconButton> }
+				<Button style={{ display: 'inline-block', marginLeft: '3rem' }} onClick={() => navigate(`/category/${categoryName.toLowerCase()}`)} aria-label={`Go to ${categoryName}`}>
+					<div className={classes.categoryColorCircle} style={{ backgroundColor: `#${categoryHexColour}` }}></div>
+					<span className={classes.articleInfoCategory} style={{ color: `#${categoryHexColour}` }}>{categoryName}</span>
+				</Button>
 			</ThemeProvider>
 		</div>
 	)
