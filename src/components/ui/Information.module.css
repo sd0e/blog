@@ -12,6 +12,12 @@
 	margin-bottom: 2rem;
 }
 
+.iconHolderHolder {
+	width: 2.75rem;
+	height: 2.75rem;
+	display: block;
+}
+
 .iconHolder {
 	width: 2.75rem;
 	height: 2.75rem;
@@ -34,7 +40,7 @@
 .iconInfoHolder {
 	position: absolute;
 	z-index: 2;
-	width: 100%;
+	width: 2.75rem;
 	height: 100%;
 	display: flex;
 	justify-content: center;

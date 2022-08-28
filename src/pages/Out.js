@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import AddToAnalytics from '../scripts/AddToAnalytics';
-import { Button, ThemeProvider, createTheme } from '@mui/material';
+import { Button, ThemeProvider, createTheme, Stack } from '@mui/material';
 
 import PageHead from '../PageHead';
 import GeneratePageTitle from '../scripts/GeneratePageTitle';
@@ -71,7 +71,6 @@ export default function Out() {
 						padding: '0.5rem 1.5rem',
 						width: '15rem',
 						borderRadius: '0.5rem',
-						marginLeft: '1rem',
 					},
 				},
 			},
@@ -89,16 +88,18 @@ export default function Out() {
 						I may get a commission to help fund this blog if you use this link
 					</Information>
 
-					<ThemeProvider theme={theme}>
-						<Button onClick={() => {
-							AddToAnalytics(`Site Leave: ${campaign.name}`, window.location.href);
-							window.open(campaign.url);
-							navigate(-1);
-						}}>Go</Button>
-					</ThemeProvider>
-					<ThemeProvider theme={returnTheme}>
-						<Button onClick={() => navigate(-1)}>Return</Button>
-					</ThemeProvider>
+					<Stack spacing={2} direction={{ xs: "column", sm: "row"}}>
+						<ThemeProvider theme={theme}>
+							<Button onClick={() => {
+								AddToAnalytics(`Site Leave: ${campaign.name}`, window.location.href);
+								window.open(campaign.url);
+								navigate(-1);
+							}}>Go</Button>
+						</ThemeProvider>
+						<ThemeProvider theme={returnTheme}>
+							<Button onClick={() => navigate(-1)}>Return</Button>
+						</ThemeProvider>
+					</Stack>
 				</div>
 			}
 		</div>
