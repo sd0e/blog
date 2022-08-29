@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import AddToAnalytics from '../scripts/AddToAnalytics';
 import { Button, ThemeProvider, createTheme, Stack } from '@mui/material';
+import { HighlightOff } from '@mui/icons-material';
 
 import PageHead from '../PageHead';
 import GeneratePageTitle from '../scripts/GeneratePageTitle';
@@ -13,7 +14,7 @@ import Information from '../components/ui/Information';
 
 export default function Out() {
 	const location = useLocation();
-	const campaignID = location.pathname.split('/').pop().toLowerCase().split(' ').join('-');
+	const campaignID = location.pathname.split('/out/')[1];
 
 	let navigate = useNavigate();
 
@@ -22,7 +23,9 @@ export default function Out() {
 	useEffect(() => {
 		AddToAnalytics(`Campaign | ${campaignID}`, location.pathname);
 
-		Fetch(`/campaigns/campaign/${campaignID}`).then(fetchedCampaign => setCampaign(fetchedCampaign));
+		Fetch(`/campaigns/campaign/${campaignID}`).then(fetchedCampaign => {
+			setCampaign(fetchedCampaign)
+		});
 	}, []);
 
 	const theme = createTheme({
@@ -81,6 +84,7 @@ export default function Out() {
 		<div>
 			<PageHead Title={GeneratePageTitle('Leaving Site')} />
 			{ campaign === 'Loading' ? <InfoCard Loading>Loading</InfoCard> :
+				campaign === null ? <InfoCard Icon={HighlightOff}>Campaign Not Found</InfoCard> :
 				<div>
 					<ArticleTitle>{campaign.name}</ArticleTitle>
 					<MiniDescription>{campaign.description}</MiniDescription>
@@ -91,7 +95,7 @@ export default function Out() {
 					<Stack spacing={2} direction={{ xs: "column", sm: "row"}}>
 						<ThemeProvider theme={theme}>
 							<Button onClick={() => {
-								AddToAnalytics(`Site Leave: ${campaign.name}`, window.location.href);
+								AddToAnalytics(`Site Leave: ${campaignID}`, window.location.href);
 								window.open(campaign.url);
 								navigate(-1);
 							}}>Go</Button>

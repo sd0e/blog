@@ -114,7 +114,7 @@ export default function NavMenu({ Mobile, OnChoice, CompactMode }) {
 				</ThemeProvider>
 			</div>
 			{ campaign === 'Loading' ? <InfoCard Loading>Loading</InfoCard> :
-				<CampaignDisplay CampaignID={campaign.name.toLowerCase().split(' ').join('-')} SiteName={campaign.name} Description={campaign.description} Type={campaign.type === 'ref' ? 'referral' : 'affiliate'} Mobile={Mobile} OnChoice={OnChoice} />
+				<CampaignDisplay CampaignID={campaign.id} SiteName={campaign.name} Description={campaign.description} Type={campaign.type === 'ref' ? 'referral' : 'affiliate'} Mobile={Mobile} OnChoice={OnChoice} />
 			}
 		</div>
 	)
