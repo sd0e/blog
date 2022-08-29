@@ -1,18 +1,69 @@
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
-    <script xmlns="http://www.w3.org/1999/xhtml"><![CDATA[
-    const xhr = new XMLHttpRequest();
-        xhr.open('GET', 'https://sebdoe-api.herokuapp.com/sitemap.xml', true);
 
-        xhr.responseType = 'document';
-
-        xhr.onload = () => {
-            document.getElementsByTagName('urlset')[0].innerHTML = xhr.responseXML.childNodes[0].innerHTML;
-        }
-
-        xhr.onerror = () => {
-            document.getElementsByTagName('urlset')[0].innerHTML = '<url><loc>https://sebdoe.com</loc></url>';
-        }
-
-        xhr.send();
-    ]]></script>
-</urlset>
+        <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+        <url>
+          <loc>https://sebdoe.com/</loc>
+          <priority>1.0</priority>
+          <changefreq>daily</changefreq>
+        </url>
+        <url>
+          <loc>https://sebdoe.com/about</loc>
+          <priority>0.5</priority>
+        </url>
+        <url>
+          <loc>https://sebdoe.com/category/javascript</loc>
+          <priority>0.2</priority>
+          <changefreq>weekly</changefreq>
+        </url>
+        <url>
+          <loc>https://sebdoe.com/category/non-coding</loc>
+          <priority>0.2</priority>
+          <changefreq>weekly</changefreq>
+        </url>
+        <url>
+          <loc>https://sebdoe.com/category/programming</loc>
+          <priority>0.2</priority>
+          <changefreq>weekly</changefreq>
+        </url>
+        <url>
+          <loc>https://sebdoe.com/category/react</loc>
+          <priority>0.2</priority>
+          <changefreq>weekly</changefreq>
+        </url>
+        <url>
+          <loc>https://sebdoe.com/category/gcse</loc>
+          <priority>0.2</priority>
+          <changefreq>weekly</changefreq>
+        </url>
+        
+<url>
+              <loc>https://sebdoe.com/article/about</loc>
+              <lastmod>2022-01-16</lastmod>
+              <priority>0.6</priority>
+            </url>
+<url>
+              <loc>https://sebdoe.com/article/attributions</loc>
+              <lastmod>2022-03-26</lastmod>
+              <priority>0.6</priority>
+            </url>
+<url>
+              <loc>https://sebdoe.com/article/how-to-use-objects-with-the-state-hook-in-react</loc>
+              <lastmod>2022-03-17</lastmod>
+              <priority>0.6</priority>
+            </url>
+<url>
+              <loc>https://sebdoe.com/article/how-to-write-hello-world-in-python</loc>
+              <lastmod>2022-03-15</lastmod>
+              <priority>0.6</priority>
+            </url>
+<url>
+              <loc>https://sebdoe.com/article/make-a-micro-sd-card-bootable-again-from-a-partitioned-drive</loc>
+              <lastmod>2019-12-25</lastmod>
+              <priority>0.6</priority>
+            </url>
+<url>
+              <loc>https://sebdoe.com/article/under-construction</loc>
+              <lastmod>2022-01-23</lastmod>
+              <priority>0.6</priority>
+            </url>
+        </urlset>
+        
