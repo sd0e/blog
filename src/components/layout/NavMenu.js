@@ -102,10 +102,6 @@ export default function NavMenu({ Mobile, OnChoice, CompactMode }) {
 								</tr>
 							</tbody>
 						</table>
-						<Button aria-label="categories">
-							Categories
-							<Add fontSize="small" />
-						</Button>
 						<Button onClick={() => goToLink('/about')} aria-label="about">
 							<span style={{ color: "#9ea4b0" }}>About This Blog</span>
 							<Info fontSize="small" style={{ color: "#9ea4b0" }} />
