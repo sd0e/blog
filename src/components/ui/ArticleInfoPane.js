@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { ThemeProvider, createTheme, IconButton, Button, Grid, Menu, MenuItem, ListItemIcon, Paper } from '@mui/material';
-import { Reddit, Share, Twitter, Comment } from '@mui/icons-material';
+import { Reddit, Share, Twitter, Comment, Edit } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
 
 import classes from './ArticleInfoPane.module.css';
@@ -73,6 +73,9 @@ export default function ArticleInfoPane({ Date, Category, ArticleName, Comments 
 						</Menu>
 						{ Comments && <IconButton size="small" color="primary" onClick={() => window.open(`https://twitter.com/sebdoe_blog/status/${Comments}`)} aria-label="Open Twitter Comments" style={{ marginLeft: "1rem" }}>
 							<Comment fontSize="small" />
+						</IconButton> }
+						{ localStorage.edit && <IconButton size="small" color="primary" onClick={() => window.open(`https://admin.sebdoe.com/post/${window.location.pathname.split('/article/')[1]}`)} aria-label="Edit post" style={{ marginLeft: "1rem" }}>
+							<Edit fontSize="small" />
 						</IconButton> }
 					</Grid>
 					<Grid item>
