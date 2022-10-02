@@ -1,4 +1,4 @@
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
 Disallow:
-Sitemap: https://sebdoe-api.herokuapp.com/sitemap.xml
+Sitemap: https://sebdoe.com/sitemap.xml

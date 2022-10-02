@@ -46,23 +46,18 @@
               <priority>0.6</priority>
             </url>
 <url>
+              <loc>https://sebdoe.com/article/how-to-convert-a-javascript-timestamp-to-relative-time</loc>
+              <lastmod>2022-09-28</lastmod>
+              <priority>0.6</priority>
+            </url>
+<url>
               <loc>https://sebdoe.com/article/how-to-use-objects-with-the-state-hook-in-react</loc>
               <lastmod>2022-03-17</lastmod>
               <priority>0.6</priority>
             </url>
 <url>
-              <loc>https://sebdoe.com/article/how-to-write-hello-world-in-python</loc>
-              <lastmod>2022-03-15</lastmod>
-              <priority>0.6</priority>
-            </url>
-<url>
               <loc>https://sebdoe.com/article/make-a-micro-sd-card-bootable-again-from-a-partitioned-drive</loc>
               <lastmod>2019-12-25</lastmod>
-              <priority>0.6</priority>
-            </url>
-<url>
-              <loc>https://sebdoe.com/article/under-construction</loc>
-              <lastmod>2022-01-23</lastmod>
               <priority>0.6</priority>
             </url>
         </urlset>
