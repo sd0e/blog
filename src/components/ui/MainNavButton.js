@@ -3,8 +3,9 @@ import { Button, createTheme, ThemeProvider } from '@mui/material';
 import Icon from '../../assets/250h/icon.png';
 
 import classes from './MainNavButton.module.css';
+import { Link } from 'react-router-dom';
 
-export default function NavMenu({ OnClick, CompactMode }) {
+export default function NavMenu({ OnClick, To, CompactMode }) {
 	const theme = createTheme({
 		palette: {
 			mode: "dark",
@@ -32,26 +33,28 @@ export default function NavMenu({ OnClick, CompactMode }) {
 
 	return (
 		<ThemeProvider theme={theme}>
-			<Button onClick={OnClick} aria-label="Home">
-				<div>
-					<table>
-						<tbody>
-							<tr>
-								{
-									!CompactMode &&
-									<th className={classes.leftIcon}>
-										<img src={Icon} alt="Seb Doe Icon" className={classes.icon} draggable="false" />
+			<Link to={To} aria-label="Home" style={{ textDecoration: 'none' }} onClick={OnClick}>
+				<Button aria-label="Home">
+					<div>
+						<table>
+							<tbody>
+								<tr>
+									{
+										!CompactMode &&
+										<th className={classes.leftIcon}>
+											<img src={Icon} alt="Seb Doe Icon" className={classes.icon} draggable="false" />
+										</th>
+									}
+									<th className={classes.rightDescription}>
+										<span className={classes.siteName}>Seb Doe</span>
+										<span className={classes.siteSubtitle}>Programming Blog</span>
 									</th>
-								}
-								<th className={classes.rightDescription}>
-									<span className={classes.siteName}>Seb Doe</span>
-									<span className={classes.siteSubtitle}>Programming Blog</span>
-								</th>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-			</Button>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</Button>
+			</Link>
 		</ThemeProvider>
 	)
 }

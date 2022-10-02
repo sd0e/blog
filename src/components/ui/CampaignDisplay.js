@@ -1,12 +1,10 @@
 import React from 'react';
 import { Button, createTheme, ThemeProvider } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import classes from './CampaignDisplay.module.css';
 
 export default function CampaignDisplay({ CampaignID, SiteName, Description, Type, Mobile, OnChoice }) {
-	let navigate = useNavigate();
-
 	const theme = createTheme({
 		palette: {
 			mode: 'dark',
@@ -35,22 +33,19 @@ export default function CampaignDisplay({ CampaignID, SiteName, Description, Typ
 		},
 	});
 
-	const goToLink = path => {
-		navigate(path);
-		Mobile && OnChoice();
-	}
-
 	return (
 		<ThemeProvider theme={theme}>
-			<Button onClick={() => goToLink(`/out/${CampaignID}`)} aria-label="Go to referral campaign">
-				<div className={classes.campaignContentOuter}>
-					<span className={classes.campaignType}>{ Type === 'referral' ? 'Referral' : 'Affiliate Link' }</span>
-					<br />
-					<span className={classes.campaignSiteName}>{SiteName}</span>
-					<br />
-					<span className={classes.campaignDescription}>{Description}</span>
-				</div>
-			</Button>
+			<Link to={`/out/${CampaignID}`} onClick={() => Mobile && OnChoice()} aria-label="Go to referral campaign" style={{ textDecoration: 'none' }}>
+				<Button aria-label="Go to referral campaign">
+					<div className={classes.campaignContentOuter}>
+						<span className={classes.campaignType}>{ Type === 'referral' ? 'Referral' : 'Affiliate Link' }</span>
+						<br />
+						<span className={classes.campaignSiteName}>{SiteName}</span>
+						<br />
+						<span className={classes.campaignDescription}>{Description}</span>
+					</div>
+				</Button>
+			</Link>
 		</ThemeProvider>
 	)
 }

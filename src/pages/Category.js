@@ -102,9 +102,7 @@ export default function Out() {
 									// [0] is the article title, [1] is its UTC publish time in ms
 									const categoryArticleArray = categoryArticle.split('|||');
 									const timeString = StringFromDate(categoryArticleArray[1]);
-									return <PostButton Date={timeString} key={categoryArticleArray[0]} Category={categoryInfo['name']} CategoryColour={`#${categoryInfo['color']}`} Click={() => {
-										navigate(`/article/${categoryArticleArray[0].toLowerCase().split(' ').join('-')}`);
-									}}>{categoryArticleArray[0]}</PostButton>
+									return <PostButton Date={timeString} key={categoryArticleArray[0]} Category={categoryInfo['name']} CategoryColour={`#${categoryInfo['color']}`} To={`/article/${categoryArticleArray[0].toLowerCase().split(' ').join('-')}`}>{categoryArticleArray[0]}</PostButton>
 								})
 					}
 					<div id="end">{ earliestPageNum === 'Progress' && categoryArticles !== 'Loading' &&

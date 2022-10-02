@@ -1,9 +1,10 @@
 import { Button, createTheme, ThemeProvider } from '@mui/material';
+import { Link } from 'react-router-dom';
 import React from 'react';
 
 import classes from './PostButton.module.css';
 
-export default function PostButton({ children, Date, Category, CategoryColour, Click }) {
+export default function PostButton({ children, Date, Category, CategoryColour, To }) {
 	const theme = createTheme({
 		palette: {
 			mode: "dark",
@@ -33,15 +34,17 @@ export default function PostButton({ children, Date, Category, CategoryColour, C
 
 	return (
 		<ThemeProvider theme={theme}>
-			<Button onClick={Click} aria-label={`Go to the following post: ${children}`}>
-				<div className={classes.postButtonContainerOuter}>
-					<span className={classes.postButtonTitle}>{children}</span>
-					<div className={classes.postButtonBottomContentContainer}>
-						<span className={classes.postButtonDate}>{Date}</span>
-						<span className={classes.postButtonCategory} style={{ color: CategoryColour }}>{Category}</span>
+			<Link to={To} aria-label={`Go to the following post: ${children}`} style={{ textDecoration: 'none' }}>
+				<Button aria-label={`Go to the following post: ${children}`}>
+					<div className={classes.postButtonContainerOuter}>
+						<span className={classes.postButtonTitle}>{children}</span>
+						<div className={classes.postButtonBottomContentContainer}>
+							<span className={classes.postButtonDate}>{Date}</span>
+							<span className={classes.postButtonCategory} style={{ color: CategoryColour }}>{Category}</span>
+						</div>
 					</div>
-				</div>
-			</Button>
+				</Button>
+			</Link>
 		</ThemeProvider>
 	)
 }

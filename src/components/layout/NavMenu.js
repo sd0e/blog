@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Button, createTheme, IconButton, ThemeProvider } from '@mui/material';
-import { Add, Close, Info, OpenInNew, Search } from '@mui/icons-material';
-import { useNavigate } from 'react-router-dom';
+import { Close, Info, OpenInNew, Search } from '@mui/icons-material';
+import { Link, useNavigate } from 'react-router-dom';
 import Fetch from '../../scripts/Fetch';
 
 import classes from './NavMenu.module.css';
@@ -83,7 +83,7 @@ export default function NavMenu({ Mobile, OnChoice, CompactMode }) {
 						</IconButton>
 					</div>
 				}
-				<MainNavButton OnClick={() => goToLink('/')} CompactMode={CompactMode} />
+				<MainNavButton OnClick={() => Mobile && OnChoice()} To="/" CompactMode={CompactMode} />
 				<ThemeProvider theme={darkTheme}>
 					<div className={classes.navMenuInner}>
 						<table className={classes.searchTableOuter}>
@@ -102,14 +102,18 @@ export default function NavMenu({ Mobile, OnChoice, CompactMode }) {
 								</tr>
 							</tbody>
 						</table>
-						<Button onClick={() => goToLink('/about')} aria-label="about">
-							<span style={{ color: "#9ea4b0" }}>About This Blog</span>
-							<Info fontSize="small" style={{ color: "#9ea4b0" }} />
-						</Button>
-						<Button onClick={() => goToLink('https://git.sebdoe.com/', true)} aria-label="personal website">
-							<span style={{ color: "#74ba74" }}>Personal Website</span>
-							<OpenInNew fontSize="small" style={{ color: "#74ba74" }} />
-						</Button>
+						<Link to="/about" aria-label="about" onClick={() => Mobile && OnChoice()} style={{ textDecoration: 'none' }}>
+							<Button aria-label="about">
+								<span style={{ color: "#9ea4b0" }}>About This Blog</span>
+								<Info fontSize="small" style={{ color: "#9ea4b0" }} />
+							</Button>
+						</Link>
+						<a href="https://git.sebdoe.com/" aria-label="personal website" target="_blank" rel="noreferrer" onClick={() => Mobile && OnChoice()} style={{ textDecoration: 'none' }}>
+							<Button aria-label="personal website">
+								<span style={{ color: "#74ba74" }}>Personal Website</span>
+								<OpenInNew fontSize="small" style={{ color: "#74ba74" }} />
+							</Button>
+						</a>
 					</div>
 				</ThemeProvider>
 			</div>

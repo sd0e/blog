@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ThemeProvider, createTheme, IconButton, Button, Grid, Menu, MenuItem, ListItemIcon, Paper } from '@mui/material';
 import { Reddit, Share, Twitter, Comment, Edit } from '@mui/icons-material';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import classes from './ArticleInfoPane.module.css';
 import StringFromDate from '../../scripts/StringFromDate';
@@ -79,12 +79,13 @@ export default function ArticleInfoPane({ Date, Category, ArticleName, Comments 
 						</IconButton> }
 					</Grid>
 					<Grid item>
-						<Button onClick={() => navigate(`/category/${categoryName.toLowerCase()}`)} aria-label={`Go to ${categoryName}`}>
-							<div className={classes.categoryColorCircle} style={{ backgroundColor: `#${categoryHexColour}` }}></div>
-							<span className={classes.articleInfoCategory} style={{ color: `#${categoryHexColour}` }}>{categoryName}</span>
-						</Button>
+						<Link to={`/category/${categoryName.toLowerCase()}`} aria-label={`Go to ${categoryName}`} style={{ textDecoration: 'none' }}>
+							<Button aria-label={`Go to ${categoryName}`}>
+								<div className={classes.categoryColorCircle} style={{ backgroundColor: `#${categoryHexColour}` }}></div>
+								<span className={classes.articleInfoCategory} style={{ color: `#${categoryHexColour}` }}>{categoryName}</span>
+							</Button>
+						</Link>
 					</Grid>
-					
 				</Grid>
 			</ThemeProvider>
 		</div>
