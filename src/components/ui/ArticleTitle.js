@@ -4,6 +4,6 @@ import classes from './ArticleTitle.module.css';
 
 export default function ArticleTitle({ children }) {
 	return (
-		<span className={classes.articleTitle}>{children}</span>
+		<h1 className={classes.articleTitle}>{children}</h1>
 	)
 }
