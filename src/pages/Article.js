@@ -65,9 +65,11 @@ export default function Article() {
 								ArticleName={articleTitle}
 								ArticleDate={StringFromDate(articleContent['date'], 'SEO')}
 							/>
-							<ArticleTitle>{articleTitle}</ArticleTitle>
-							<ArticleInfoPane Date={articleContent['date']} Category={articleContent['category']} ArticleName={articleTitle} Comments={articleContent['twitter']} />
-							<MarkdownDisplay StoryContent={articleContent['content']} />
+							<article>
+								<ArticleTitle>{articleTitle}</ArticleTitle>
+								<ArticleInfoPane Date={articleContent['date']} Category={articleContent['category']} ArticleName={articleTitle} Comments={articleContent['twitter']} />
+								<MarkdownDisplay StoryContent={articleContent['content']} />
+							</article>
 						</div>
 			}
 		</div>
