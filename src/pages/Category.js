@@ -87,7 +87,7 @@ export default function Out() {
 	} else {
 		return (
 			<div>
-				<PageHead Title={GeneratePageTitle(categoryInfo['name'])} />
+				<PageHead Title={GeneratePageTitle(categoryInfo['name'])} Description={`Blog posts tagged with ${categoryInfo['name']}`} />
 				<BrowseTopHeading>Posts Tagged With</BrowseTopHeading>
 				<BrowseCategoryHeading colour={categoryInfo['color']}>{categoryInfo['name']}</BrowseCategoryHeading>
 				<PostListContainer>

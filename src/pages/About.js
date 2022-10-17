@@ -34,19 +34,20 @@ export default function Article() {
 			{
 				articleContent === 'Loading' ?
 					<InfoCard Loading>
-						<PageHead Title={GeneratePageTitle(articleTitle)} />
+						<PageHead Title={GeneratePageTitle(articleTitle)} Description="About this blog" />
 						Loading
 					</InfoCard>
 				:
 					articleContent === 'Not Found' ?
 						<InfoCard Icon={HighlightOff}>
-							<PageHead Title={GeneratePageTitle(articleTitle)} />
+							<PageHead Title={GeneratePageTitle(articleTitle)} Description="About this blog" />
 							{articleTitle}
 						</InfoCard>
 					:
 						<div>
 							<PageHead
 								Title={GeneratePageTitle(articleTitle)}
+								Description="About this blog"
 							/>
 							<ArticleTitle>{articleTitle}</ArticleTitle>
 							<ArticleInfoPane Date={articleContent['date']} Category={articleContent['category']} ArticleName={articleTitle} />

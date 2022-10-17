@@ -64,6 +64,7 @@ export default function Article() {
 								Title={GeneratePageTitle(articleTitle)}
 								ArticleName={articleTitle}
 								ArticleDate={StringFromDate(articleContent['date'], 'SEO')}
+								Description={`${articleContent['content'].substr(0, 50)}...`}
 							/>
 							<article>
 								<ArticleTitle>{articleTitle}</ArticleTitle>

@@ -1,8 +1,9 @@
 import React from 'react'
 import { Helmet } from 'react-helmet';
 
-export default function PageHead({ Title, ArticleName, ArticleDate }) {
+export default function PageHead({ Title, ArticleName, ArticleDate, Description }) {
 	const genericTitle = 'Seb Doe';
+	const genericDescription = 'A blog for all things computer programming';
 
 	return (
 		<Helmet>
@@ -19,6 +20,9 @@ export default function PageHead({ Title, ArticleName, ArticleDate }) {
 			<meta name="twitter:title" content={Title} />
 			<meta name="twitter:site" content="@sebastiandoe5" />
 			<meta property="og:site_name" content={genericTitle} />
+			<meta name="twitter:description" content={Description ? Description : genericDescription} />
+			<meta name="description" content={Description ? Description : genericDescription} />
+			<meta name="og:description" content={Description ? Description : genericDescription} />
 			{ ArticleName && <script type="application/ld+json">{`
 				{
 					"@context": "https://schema.org/",
