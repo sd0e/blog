@@ -56,8 +56,18 @@
               <priority>0.6</priority>
             </url>
 <url>
+              <loc>https://sebdoe.com/article/learning-something-new-every-day</loc>
+              <lastmod>2022-11-04</lastmod>
+              <priority>0.6</priority>
+            </url>
+<url>
               <loc>https://sebdoe.com/article/make-a-micro-sd-card-bootable-again-from-a-partitioned-drive</loc>
               <lastmod>2019-12-25</lastmod>
+              <priority>0.6</priority>
+            </url>
+<url>
+              <loc>https://sebdoe.com/article/removing-git-from-a-folder-using-powershell-in-windows-11</loc>
+              <lastmod>2022-11-04</lastmod>
               <priority>0.6</priority>
             </url>
         </urlset>
