@@ -10,7 +10,6 @@ import InfoCard from '../components/ui/InfoCard';
 import MarkdownDisplay from '../components/ui/MarkdownDisplay';
 import ArticleTitle from '../components/ui/ArticleTitle';
 import ArticleInfoPane from '../components/ui/ArticleInfoPane';
-import SearchArticles from '../scripts/SearchArticles';
 import StringFromDate from '../scripts/StringFromDate';
 
 export default function Article() {
@@ -31,9 +30,11 @@ export default function Article() {
 	const [articleContent, setArticleContent] = useState('Loading');
 	
 	useEffect(() => {
-		AddToAnalytics(`Article | ${words.join('-')}`, location.pathname);
+		const localWords = location.pathname.split('/').pop().split('-');
 
-		Fetch(`/blog/posts/${words.join('-')}`).then(articleResult => {
+		AddToAnalytics(`Article | ${localWords.join('-')}`, location.pathname);
+
+		Fetch(`/blog/posts/${localWords.join('-')}`).then(articleResult => {
 			if (articleResult !== undefined && articleResult !== null) {
 				setArticleContent(articleResult);
 				setArticleTitle(articleResult['name']);
@@ -42,7 +43,7 @@ export default function Article() {
 				setArticleTitle('Article Not Found');
 			}
 		});
-	}, []);
+	}, [location.pathname]);
 
 	return (
 		<div>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { HighlightOff } from '@mui/icons-material';
 import { LinearProgress, ThemeProvider, createTheme } from '@mui/material';
 
@@ -16,7 +16,6 @@ import StringFromDate from '../scripts/StringFromDate';
 import InfoCard from '../components/ui/InfoCard';
 
 export default function Out() {
-	let navigate = useNavigate();
 	let location = useLocation();
 	
 	const categoryID = location.pathname.split('/').pop().toLowerCase();
@@ -26,9 +25,11 @@ export default function Out() {
 	const [earliestPageNum, setEarliestPageNum] = useState('Progress');
 	
 	useEffect(() => {
-		AddToAnalytics(`Category | ${categoryID}`, location.pathname);
+		const localCategoryID = location.pathname.split('/').pop().toLowerCase();
 
-		Fetch(`/blog/categories/${categoryID}/info`).then(categoryDisplayInfo => {
+		AddToAnalytics(`Category | ${localCategoryID}`, location.pathname);
+
+		Fetch(`/blog/categories/${localCategoryID}/info`).then(categoryDisplayInfo => {
 			if (categoryDisplayInfo !== null && categoryDisplayInfo !== undefined) {
 				setCategoryInfo(categoryDisplayInfo);
 			} else {
@@ -36,7 +37,7 @@ export default function Out() {
 			}
 		});
 
-		FetchLast(`/blog/categories/${categoryID}/articles/page`).then(pageInfo => {
+		FetchLast(`/blog/categories/${localCategoryID}/articles/page`).then(pageInfo => {
 			if (pageInfo !== undefined && pageInfo !== null) {
 				setCategoryArticles(pageInfo[Object.keys(pageInfo)].reverse());
 				setEarliestPageNum(Number(Object.keys(pageInfo)[0]));
@@ -50,7 +51,7 @@ export default function Out() {
 				setCategoryArticles('None');
 			}
 		});
-	}, []);
+	}, [location.pathname]);
 
 	window['bottomReached'] = () => {
 		if (earliestPageNum !== 'Progress' && earliestPageNum > 1) {

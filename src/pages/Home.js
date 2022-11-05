@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { LinearProgress, ThemeProvider, createTheme } from '@mui/material';
 
 import AddToAnalytics from '../scripts/AddToAnalytics';
@@ -12,8 +11,6 @@ import FetchLast from '../scripts/FetchLast';
 import InfoCard from '../components/ui/InfoCard';
 
 export default function Home() {
-	let navigate = useNavigate();
-	
 	const [categoryArticles, setCategoryArticles] = useState('Loading');
 	const [earliestPageNum, setEarliestPageNum] = useState('Progress');
 

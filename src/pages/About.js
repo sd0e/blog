@@ -27,7 +27,9 @@ export default function Article() {
 				setArticleContent('Not Found');
 			}
 		});
-	}, []);
+
+		console.log('called');
+	}, [location.pathname]);
 
 	return (
 		<div>
@@ -45,6 +47,7 @@ export default function Article() {
 						</InfoCard>
 					:
 						<div>
+							Testing!
 							<PageHead
 								Title={GeneratePageTitle(articleTitle)}
 								Description="About this blog"

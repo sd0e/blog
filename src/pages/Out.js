@@ -21,12 +21,16 @@ export default function Out() {
 	const [campaign, setCampaign] = useState('Loading');
 	
 	useEffect(() => {
-		AddToAnalytics(`Campaign | ${campaignID}`, location.pathname);
+		const localCampaignID = location.pathname.split('/out/')[1];
 
-		Fetch(`/campaigns/campaign/${campaignID}`).then(fetchedCampaign => {
+		AddToAnalytics(`Campaign | ${localCampaignID}`, location.pathname);
+
+		Fetch(`/campaigns/campaign/${localCampaignID}`).then(fetchedCampaign => {
 			setCampaign(fetchedCampaign)
 		});
-	}, []);
+
+		console.log('called');
+	}, [location.pathname]);
 
 	const theme = createTheme({
 		palette: {
@@ -36,9 +40,6 @@ export default function Out() {
 			MuiButton: {
 				styleOverrides: {
 					root: {
-						background: 'rgb(35,17,72)',
-						background: '-moz-linear-gradient(90deg, rgba(35,17,72,1) 0%, rgba(26,17,129,1) 40%, rgba(14,21,251,1) 100%)',
-						background: '-webkit-linear-gradient(90deg, rgba(35,17,72,1) 0%, rgba(26,17,129,1) 40%, rgba(14,21,251,1) 100%)',
 						background: 'linear-gradient(90deg, rgba(35,17,72,1) 0%, rgba(26,17,129,1) 40%, rgba(14,21,251,1) 100%)',
 						filter: 'progid:DXImageTransform.Microsoft.gradient(startColorstr="#231148",endColorstr="#0e15fb",GradientType=1)',
 						justifyContent: 'left',
