@@ -51,6 +51,11 @@
               <priority>0.6</priority>
             </url>
 <url>
+              <loc>https://sebdoe.com/article/how-to-fix-cannot-read-properties-of-null-(reading-pickalgorithm)-in-npm</loc>
+              <lastmod>2022-11-05</lastmod>
+              <priority>0.6</priority>
+            </url>
+<url>
               <loc>https://sebdoe.com/article/how-to-use-objects-with-the-state-hook-in-react</loc>
               <lastmod>2022-03-17</lastmod>
               <priority>0.6</priority>
