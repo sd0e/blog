@@ -47,7 +47,6 @@ export default function Article() {
 						</InfoCard>
 					:
 						<div>
-							Testing!
 							<PageHead
 								Title={GeneratePageTitle(articleTitle)}
 								Description="About this blog"
