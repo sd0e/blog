@@ -46,6 +46,11 @@
 					<priority>0.6</priority>
 				</url>
 <url>
+					<loc>https://sebdoe.com/article/how-i-created-a-blog-using-react-from-scratch</loc>
+					<lastmod>2022-11-06</lastmod>
+					<priority>0.6</priority>
+				</url>
+<url>
 					<loc>https://sebdoe.com/article/how-to-convert-a-javascript-timestamp-to-relative-time</loc>
 					<lastmod>2022-09-28</lastmod>
 					<priority>0.6</priority>
