@@ -8,6 +8,7 @@ import { ContentCopy } from '@mui/icons-material';
 
 import Information from './Information';
 import classes from './MarkdownDisplay.module.css';
+import { Link } from 'react-router-dom';
 
 export default function MarkdownDisplay({ StoryContent }) {
 	const campaignRegex = /\[out\|[a-z0-9-_ ]+\|[^\]]*\]/gi;
@@ -78,6 +79,11 @@ export default function MarkdownDisplay({ StoryContent }) {
 						} else return <p {...props}>{children}</p>;
 					}
 					else return <p {...props}>{children}</p>;
+				},
+				a({ children, props, href }) {
+					if (href.charAt(0) === '/') {
+						return <Link to={href} {...props}>{children}</Link>
+					} else return <a href={href} {...props}>{children}</a>
 				}
 			}}
 		/>
