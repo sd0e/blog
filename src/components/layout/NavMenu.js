@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Button, createTheme, IconButton, ThemeProvider } from '@mui/material';
 import { Close, Info, OpenInNew, Search } from '@mui/icons-material';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Fetch from '../../scripts/Fetch';
 
 import classes from './NavMenu.module.css';
@@ -12,8 +12,6 @@ import InfoCard from '../ui/InfoCard';
 export default function NavMenu({ Mobile, OnChoice, CompactMode }) {
 	const [searchInputVal, setSearchInputVal] = useState('');
 	const [campaign, setCampaign] = useState('Loading');
-	
-	let navigate = useNavigate();
 
 	useEffect(() => {
 		Fetch('/campaigns/main').then(fetchedCampaign => setCampaign(fetchedCampaign));
@@ -66,12 +64,6 @@ export default function NavMenu({ Mobile, OnChoice, CompactMode }) {
 		},
 	});
 
-	const goToLink = (path, openInNew = false) => {
-		if (openInNew) window.open(path);
-		else navigate(path);
-		Mobile && OnChoice();
-	}
-
 	return (
 		<div className={ Mobile ? classes.flexDivMobile : classes.flexDiv }>
 			<div>
@@ -94,7 +86,7 @@ export default function NavMenu({ Mobile, OnChoice, CompactMode }) {
 									</th>
 									<th>
 										<ThemeProvider theme={searchButtonTheme}>
-											<Button aria-label="search" onClick={() => goToLink(`/article/${searchInputVal.split(' ').join('-').toLowerCase()}`)}>
+											<Button aria-label="search" onClick={() => window.open(`https://www.google.com/search?q=site:sebdoe.com%20${encodeURIComponent(searchInputVal)}`)}>
 												<Search fontSize="small" />
 											</Button>
 										</ThemeProvider>
