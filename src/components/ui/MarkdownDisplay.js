@@ -71,8 +71,7 @@ export default function MarkdownDisplay({ StoryContent }) {
 						</code>
 					)
 				},
-				p({ children, props }, idx) {
-					console.log(children, props);
+				p({ children, props }) {
 					if (typeof children[0] === 'string') {
 						if (children[0].includes('|||')) {
 							children = children[0].split('|||');
