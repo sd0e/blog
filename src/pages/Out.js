@@ -28,8 +28,6 @@ export default function Out() {
 		Fetch(`/campaigns/campaign/${localCampaignID}`).then(fetchedCampaign => {
 			setCampaign(fetchedCampaign)
 		});
-
-		console.log('called');
 	}, [location.pathname]);
 
 	const theme = createTheme({
