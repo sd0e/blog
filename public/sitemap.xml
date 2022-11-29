@@ -46,6 +46,11 @@
 					<priority>0.6</priority>
 				</url>
 <url>
+					<loc>https://sebdoe.com/article/fix-error-'the-requested-module-does-not-provide-an-export-named'-when-using-typescript</loc>
+					<lastmod>2022-11-29</lastmod>
+					<priority>0.6</priority>
+				</url>
+<url>
 					<loc>https://sebdoe.com/article/how-i-created-a-blog-using-react-from-scratch</loc>
 					<lastmod>2022-11-06</lastmod>
 					<priority>0.6</priority>
