@@ -18,7 +18,7 @@ export default function PageHead({ Title, ArticleName, ArticleDate, Description 
         	<meta name="title" content={genericTitle} />
 			<meta property="og:title" content={Title} />
 			<meta name="twitter:title" content={Title} />
-			<meta name="twitter:site" content="@sebastiandoe5" />
+			<meta name="twitter:site" content="@sbd0e" />
 			<meta property="og:site_name" content={genericTitle} />
 			<meta name="twitter:description" content={Description ? Description : genericDescription} />
 			<meta name="description" content={Description ? Description : genericDescription} />
