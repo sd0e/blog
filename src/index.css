@@ -68,3 +68,16 @@ code {
 	padding: 0.25rem;
 	border-radius: 0.25rem;
 }
+
+.math-inline {
+	padding: 0.25rem;
+	border-radius: 0.25rem;
+}
+
+.math-display {
+	background-color: #1D1F21;
+	padding: 1rem;
+	border-radius: 0.25rem;
+	margin-top: 2rem;
+	margin-bottom: 2rem;
+}
