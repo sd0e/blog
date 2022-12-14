@@ -41,6 +41,11 @@
 					<priority>0.6</priority>
 				</url>
 <url>
+					<loc>https://sebdoe.com/article/arc-length</loc>
+					<lastmod>2022-12-13</lastmod>
+					<priority>0.6</priority>
+				</url>
+<url>
 					<loc>https://sebdoe.com/article/attributions</loc>
 					<lastmod>2022-03-26</lastmod>
 					<priority>0.6</priority>
@@ -78,6 +83,11 @@
 <url>
 					<loc>https://sebdoe.com/article/make-a-micro-sd-card-bootable-again-from-a-partitioned-drive</loc>
 					<lastmod>2019-12-25</lastmod>
+					<priority>0.6</priority>
+				</url>
+<url>
+					<loc>https://sebdoe.com/article/math-formatting-with-katex-in-react-markdown-using-rehype-katex</loc>
+					<lastmod>2022-12-14</lastmod>
 					<priority>0.6</priority>
 				</url>
 <url>
