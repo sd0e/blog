@@ -35,7 +35,6 @@ h1, h2, h3, h4, h5, h6 {
 html, body {
 	width: 100%;
 	height: 100vh;
-	overflow-y: hidden;
 }
 
 body {
