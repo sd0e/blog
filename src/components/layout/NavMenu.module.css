@@ -1,5 +1,5 @@
 .navMenuInner {
-	padding: 3rem 1.5rem;
+	padding: 2rem 1.5rem;
 }
 
 .searchInput {
@@ -22,7 +22,7 @@
 .searchTableOuter {
 	width: 100%;
 	border-spacing: 0;
-	margin-bottom: 2rem;
+	/* margin-bottom: 2rem; */
 }
 
 .flexDivMobile {
