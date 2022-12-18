@@ -41,6 +41,11 @@
 					<priority>0.6</priority>
 				</url>
 <url>
+					<loc>https://sebdoe.com/article/alex</loc>
+					<lastmod>2022-12-15</lastmod>
+					<priority>0.6</priority>
+				</url>
+<url>
 					<loc>https://sebdoe.com/article/arc-length</loc>
 					<lastmod>2022-12-13</lastmod>
 					<priority>0.6</priority>
@@ -73,11 +78,6 @@
 <url>
 					<loc>https://sebdoe.com/article/how-to-use-objects-with-the-state-hook-in-react</loc>
 					<lastmod>2022-03-17</lastmod>
-					<priority>0.6</priority>
-				</url>
-<url>
-					<loc>https://sebdoe.com/article/katex-test</loc>
-					<lastmod>2022-12-15</lastmod>
 					<priority>0.6</priority>
 				</url>
 <url>
