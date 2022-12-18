@@ -37,12 +37,17 @@ html, body {
 	height: 100vh;
 }
 
+html {
+	overflow-y: clip;
+}
+
 body {
 	margin: 0;
 	background-color: #191919;
 	color: #FFFFFF;
 	font-family: 'Inter', sans-serif;
 	font-weight: 600;
+	overflow-y: auto;
 }
 
 * {
