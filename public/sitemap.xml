@@ -41,11 +41,6 @@
 					<priority>0.6</priority>
 				</url>
 <url>
-					<loc>https://sebdoe.com/article/alex</loc>
-					<lastmod>2022-12-15</lastmod>
-					<priority>0.6</priority>
-				</url>
-<url>
 					<loc>https://sebdoe.com/article/arc-length</loc>
 					<lastmod>2022-12-13</lastmod>
 					<priority>0.6</priority>
@@ -73,6 +68,11 @@
 <url>
 					<loc>https://sebdoe.com/article/how-to-fix-cannot-read-properties-of-null-(reading-pickalgorithm)-in-npm</loc>
 					<lastmod>2022-11-05</lastmod>
+					<priority>0.6</priority>
+				</url>
+<url>
+					<loc>https://sebdoe.com/article/how-to-iterate-over-characters-of-a-string-in-go</loc>
+					<lastmod>2023-01-15</lastmod>
 					<priority>0.6</priority>
 				</url>
 <url>
