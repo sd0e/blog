@@ -56,6 +56,11 @@
 					<priority>0.6</priority>
 				</url>
 <url>
+					<loc>https://sebdoe.com/article/full-latex-handbook</loc>
+					<lastmod>2023-01-20</lastmod>
+					<priority>0.6</priority>
+				</url>
+<url>
 					<loc>https://sebdoe.com/article/how-i-created-a-blog-using-react-from-scratch</loc>
 					<lastmod>2022-11-06</lastmod>
 					<priority>0.6</priority>
