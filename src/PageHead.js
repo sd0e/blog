@@ -12,9 +12,9 @@ export default function PageHead({ Title, ArticleName, ArticleDate, Description 
 			<link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png" />
 			<link rel="manifest" href="/assets/icons/site.webmanifest" />
 			<link rel="shortcut icon" href="/assets/icons/favicon.ico" />
-			<meta name="msapplication-TileColor" content="#191919" />
+			<meta name="msapplication-TileColor" content="#17191c" />
 			<meta name="msapplication-config" content="/assets/icons/browserconfig.xml" />
-			<meta name="theme-color" content="#191919" />
+			<meta name="theme-color" content="#17191c" />
         	<meta name="title" content={genericTitle} />
 			<meta property="og:title" content={Title} />
 			<meta name="twitter:title" content={Title} />

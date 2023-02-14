@@ -55,7 +55,7 @@ export default function NavMenu({ Mobile, OnChoice, CompactMode }) {
 						padding: "0.9rem 0.8rem",
 						width: "100%",
 						borderRadius: "0.5rem",
-						background: "#191919",
+						background: "#17191c",
 						border: "1px solid rgba(255, 255, 255, 0.1)",
 						color: "#cccccc",
 					},
@@ -81,7 +81,7 @@ export default function NavMenu({ Mobile, OnChoice, CompactMode }) {
 						<table className={classes.searchTableOuter}>
 							<tbody>
 								<tr className={classes.removeSearchTableBorder}>
-									<th>
+									<th className={classes.searchBoxContainer}>
 										<input type="text" onChange={e => setSearchInputVal(e.target.value)} className={classes.searchInput} placeholder="Search" />
 									</th>
 									<th>

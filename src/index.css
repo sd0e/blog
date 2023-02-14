@@ -31,19 +31,22 @@ h1, h2, h3, h4, h5, h6 {
 	height: 1px;
 }
 
-html {
+html, body {
 	width: 100%;
-	height: 100%;
+	height: 100vh;
+}
+
+html {
+	overflow-y: clip;
 }
 
 body {
 	margin: 0;
-	background-color: #191919;
+	background-color: #17191c;
 	color: #FFFFFF;
 	font-family: 'Inter', sans-serif;
 	font-weight: 600;
-	width: 100%;
-	height: 100%;
+	overflow-y: auto;
 }
 
 * {
@@ -63,7 +66,19 @@ body {
 }
 
 code {
-	background-color: #1D1F21;
 	padding: 0.25rem;
 	border-radius: 0.25rem;
+}
+
+.math-inline {
+	padding: 0.25rem;
+	border-radius: 0.25rem;
+}
+
+.math-display {
+	background-color: rgba(242, 242, 242, 0.03);
+	padding: 1rem;
+	border-radius: 0.25rem;
+	margin-top: 2rem;
+	margin-bottom: 2rem;
 }

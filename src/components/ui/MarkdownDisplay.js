@@ -3,6 +3,9 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import remarkMath from 'remark-math';
+import rehypeKatex from 'rehype-katex';
+import '../../../node_modules/katex/dist/katex.min.css';
 import { IconButton, createTheme, ThemeProvider } from '@mui/material';
 import { ContentCopy } from '@mui/icons-material';
 
@@ -41,7 +44,8 @@ export default function MarkdownDisplay({ StoryContent }) {
 	return (
 		<ReactMarkdown
 			children={StoryContent}
-			remarkPlugins={[ remarkGfm ]}
+			remarkPlugins={[ remarkGfm, remarkMath ]}
+			rehypePlugins={[ rehypeKatex ]}
 			className={classes.markdownDisplay}
 			components={{
 				code({ node, inline, className, children, ...props }) {

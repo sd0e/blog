@@ -41,6 +41,11 @@
 					<priority>0.6</priority>
 				</url>
 <url>
+					<loc>https://sebdoe.com/article/arc-length</loc>
+					<lastmod>2022-12-13</lastmod>
+					<priority>0.6</priority>
+				</url>
+<url>
 					<loc>https://sebdoe.com/article/attributions</loc>
 					<lastmod>2022-03-26</lastmod>
 					<priority>0.6</priority>
@@ -51,8 +56,18 @@
 					<priority>0.6</priority>
 				</url>
 <url>
+					<loc>https://sebdoe.com/article/full-latex-handbook</loc>
+					<lastmod>2023-01-20</lastmod>
+					<priority>0.6</priority>
+				</url>
+<url>
 					<loc>https://sebdoe.com/article/how-i-created-a-blog-using-react-from-scratch</loc>
 					<lastmod>2022-11-06</lastmod>
+					<priority>0.6</priority>
+				</url>
+<url>
+					<loc>https://sebdoe.com/article/how-i-organise-my-a-level-anki-cards</loc>
+					<lastmod>2023-02-14</lastmod>
 					<priority>0.6</priority>
 				</url>
 <url>
@@ -63,6 +78,11 @@
 <url>
 					<loc>https://sebdoe.com/article/how-to-fix-cannot-read-properties-of-null-(reading-pickalgorithm)-in-npm</loc>
 					<lastmod>2022-11-05</lastmod>
+					<priority>0.6</priority>
+				</url>
+<url>
+					<loc>https://sebdoe.com/article/how-to-iterate-over-characters-of-a-string-in-go</loc>
+					<lastmod>2023-01-15</lastmod>
 					<priority>0.6</priority>
 				</url>
 <url>
@@ -78,6 +98,11 @@
 <url>
 					<loc>https://sebdoe.com/article/make-a-micro-sd-card-bootable-again-from-a-partitioned-drive</loc>
 					<lastmod>2019-12-25</lastmod>
+					<priority>0.6</priority>
+				</url>
+<url>
+					<loc>https://sebdoe.com/article/math-formatting-with-katex-in-react-markdown-using-rehype-katex</loc>
+					<lastmod>2022-12-14</lastmod>
 					<priority>0.6</priority>
 				</url>
 <url>

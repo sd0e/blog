@@ -1,9 +1,9 @@
 .navMenuInner {
-	padding: 3rem 1.5rem;
+	padding: 2rem 1.5rem;
 }
 
 .searchInput {
-	background: #191919;
+	background: #17191c;
 	font-weight: 400;
 	color: #999999;
 	font-size: 0.9rem;
@@ -12,7 +12,11 @@
 	border-radius: 0.5rem;
 	font-family: 'Inter', sans-serif;
 	width: 10rem;
-	max-width: 80%;
+	width: calc(100% - 3rem);
+}
+
+.searchBoxContainer {
+	text-align: left;
 }
 
 .searchInput:hover {
@@ -22,7 +26,7 @@
 .searchTableOuter {
 	width: 100%;
 	border-spacing: 0;
-	margin-bottom: 2rem;
+	/* margin-bottom: 2rem; */
 }
 
 .flexDivMobile {
