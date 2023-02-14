@@ -12,15 +12,14 @@ a {
 	color: #84bef0;
 }
 
-p {
+p, li {
+	font-weight: 400;
 	filter: opacity(0.9);
 	line-height: 1.75rem;
-	margin-top: 2rem;
-	font-weight: 400;
 }
 
-li {
-	font-weight: 400;
+p {
+	margin-top: 2rem;
 }
 
 h1, h2, h3, h4, h5, h6 {
