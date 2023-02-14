@@ -5,7 +5,7 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
-import '../../../node_modules/katex/dist/katex.min.css';
+import 'katex/dist/katex.min.css';
 import { IconButton, createTheme, ThemeProvider } from '@mui/material';
 import { ContentCopy } from '@mui/icons-material';
 

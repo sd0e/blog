@@ -15,7 +15,7 @@ import StringFromDate from '../scripts/StringFromDate';
 export default function Article() {
 	let location = useLocation();
 	
-	const words = location.pathname.split('/').pop().split('-');
+	const words = decodeURIComponent(location.pathname.split('/').pop().split('-'));
 
 	var completedWord = '';
 
@@ -30,7 +30,7 @@ export default function Article() {
 	const [articleContent, setArticleContent] = useState('Loading');
 	
 	useEffect(() => {
-		const localWords = location.pathname.split('/').pop().split('-');
+		const localWords = decodeURIComponent(location.pathname.split('/').pop()).split('-');
 
 		AddToAnalytics(`Article | ${localWords.join('-')}`, location.pathname);
 
