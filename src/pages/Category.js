@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { HighlightOff } from '@mui/icons-material';
-import { LinearProgress, ThemeProvider, createTheme } from '@mui/material';
+import { LinearProgress, ThemeProvider, createTheme, IconButton } from '@mui/material';
+import { RssFeedOutlined } from '@mui/icons-material';
 
 import AddToAnalytics from '../scripts/AddToAnalytics';
 import PageHead from '../PageHead';
@@ -68,6 +69,20 @@ export default function Out() {
 	const theme = createTheme({
 		palette: {
 			mode: 'dark',
+			primary: {
+				main: '#8e8c99',
+			},
+		},
+		components: {
+			MuiButton: {
+				textTransform: "none",
+				fontFamily: `"Inter", sans-serif`,
+				fontWeight: 600,
+				textAlign: "left",
+				justifyContent: "flex-start",
+				padding: "1rem 1.5rem",
+				borderRadius: "1rem",
+			}
 		},
 	});
 
@@ -87,10 +102,19 @@ export default function Out() {
 		);
 	} else {
 		return (
-			<div>
+			<ThemeProvider theme={theme}>
 				<PageHead Title={GeneratePageTitle(categoryInfo['name'])} Description={`Blog posts tagged with ${categoryInfo['name']}`} />
-				<BrowseTopHeading>Posts Tagged With</BrowseTopHeading>
-				<BrowseCategoryHeading colour={categoryInfo['color']}>{categoryInfo['name']}</BrowseCategoryHeading>
+				<div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+					<div>
+						<BrowseTopHeading>Posts Tagged With</BrowseTopHeading>
+						<BrowseCategoryHeading colour={categoryInfo['color']}>{categoryInfo['name']}</BrowseCategoryHeading>
+					</div>
+					<a href={`https://rss.sebdoe.com/category/${categoryInfo['name'].toLowerCase()}/rss.xml`} target="_blank" rel="noreferrer" style={{ textDecoration: 'none' }}>
+						<IconButton size="small" color="primary">
+							<RssFeedOutlined fontSize="small" />
+						</IconButton>
+					</a>
+				</div>
 				<PostListContainer>
 					{
 						categoryArticles === 'Loading' ?
@@ -111,12 +135,10 @@ export default function Out() {
 								})
 					}
 					<div id="end">{ earliestPageNum === 'Progress' && categoryArticles !== 'Loading' &&
-						<ThemeProvider theme={theme}>
 							<LinearProgress />
-						</ThemeProvider>
 					}</div>
 				</PostListContainer>
-			</div>
+			</ThemeProvider>
 		);
 	}
 }
