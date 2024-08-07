@@ -100,7 +100,7 @@ export default function NavMenu({ Mobile, OnChoice, CompactMode }) {
 								<Info fontSize="small" style={{ color: "#9ea4b0" }} />
 							</Button>
 						</Link>
-						<a href="https://about.sebdoe.com/" aria-label="personal website" target="_blank" rel="noreferrer" onClick={() => Mobile && OnChoice()} style={{ textDecoration: 'none' }}>
+						<a href="https://doe.lc/" aria-label="personal website" target="_blank" rel="noreferrer" onClick={() => Mobile && OnChoice()} style={{ textDecoration: 'none' }}>
 							<Button aria-label="personal website">
 								<span style={{ color: "#74ba74" }}>Personal Website</span>
 								<OpenInNew fontSize="small" style={{ color: "#74ba74" }} />
